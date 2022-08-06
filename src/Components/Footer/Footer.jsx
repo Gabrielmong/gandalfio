@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./footer.css";
 import Github from "../../Assets/SVG/Github.svg";
 import LinkedIn from "../../Assets/SVG/LinkedIn.svg";
@@ -13,7 +14,7 @@ export default function Footer() {
       <div className="footer">
         <div className="mainContent">
           <p>
-            Developed by <a href="/about">Gabriel Monge</a>
+            Developed by <Link to="/about">Gabriel Monge</Link>
           </p>
         </div>
         <div className="linksContent">
