@@ -1,0 +1,26 @@
+.text {
+    margin: 5px;
+    padding: 0;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials a {
+    margin: 0 10px;
+}
+
+.form {
+    width: 100%;
+    height: 878px;
+}
+
+@media screen and (max-width: 700px) {
+    .form  {
+        height: 1024px;
+    }
+}
+
