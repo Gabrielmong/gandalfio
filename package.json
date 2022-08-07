@@ -2,7 +2,7 @@
   "name": "gandalf.io",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gabrielmong.github.io/gandalf.io/",
+  "homepage": "https://gabrielmong.github.io/gandalfio/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",

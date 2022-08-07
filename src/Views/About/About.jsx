@@ -16,7 +16,7 @@ export default function About() {
               {" "}
               Universidad Fidélitas{" "}
             </a>
-            and constantle taking courses on Pirple, Udemy, Scrimba,
+            and constantly taking courses on Pirple, Udemy, Scrimba,
             FreeCodeCamp, trying to make use of the knowledge I have in personal
             projects, university projects, and actual work.
           </p>
@@ -62,7 +62,7 @@ export default function About() {
           </p>
           <p>
             I really like dogs, and gym stuff, I also like to play video games,
-            a lot, some music too, like Metal a lot, and listen mainly to Opeth,
+            a lot, some music too, like Metal, and listen mainly to Opeth,
             Tool, Amon Amarth,{" "}
             <a
               href="https://open.spotify.com/user/12166594253?si=d393e3e0699d44b9"
