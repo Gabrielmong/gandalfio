@@ -19,7 +19,7 @@ export default function Contact() {
             can find me on social media too.
           </p>
           <p className="text">
-            There's my socials on the footer of the page, but still, here
+            There's my socials on the footer of the page, but still, here :D
           </p>
 
           <div className="socials">
