@@ -7,6 +7,8 @@ import Home from "./Views/Home/Home";
 import About from "./Views/About/About";
 import Contact from "./Views/Contact/Contact";
 import NotFound from "./Views/NotFound/NotFound";
+import Tenzies from "./Views/Tenzies/Tenzies";
+import Projects from "./Views/Projects/Projects";
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="tenzies" element={<Tenzies />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

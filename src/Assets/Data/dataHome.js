@@ -2,7 +2,8 @@
 export default [
     {
         title: "Projects",
-        description: "Right now i dont have any hosted projects, but you can check my github profile to see some of the things i have done, i got some public repositories on github, like a dumb python game i made, and all the final projects i have done for college",
+        description: `Projects I've done in the past, or currently working on. from personal stuff, the "just cause" projects, and some University projects for their respective course.`,
+        link: "/projects",
     },
     {
         title: "Work",

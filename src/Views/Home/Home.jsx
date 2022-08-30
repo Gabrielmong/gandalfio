@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import Info from "../../Assets/Data/data.js";
+import Info from "../../Assets/Data/dataHome.js";
 import Card from "../../Components/Generic/Card";
 
 export default function Home() {
