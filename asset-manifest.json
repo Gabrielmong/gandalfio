@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gandalfio/static/css/main.0d0fa043.css",
-    "main.js": "/gandalfio/static/js/main.ffa6fd02.js",
+    "main.css": "/gandalfio/static/css/main.18f057eb.css",
+    "main.js": "/gandalfio/static/js/main.d111bb52.js",
     "static/media/Github.svg": "/gandalfio/static/media/Github.b0868cac27c4cd65cebbd301ca560b49.svg",
     "static/media/Instagram.svg": "/gandalfio/static/media/Instagram.64ef484196f5f028295279fdc3a45a02.svg",
     "static/media/Twitter.svg": "/gandalfio/static/media/Twitter.5f44be679fabf502b066eed57a87f79b.svg",
@@ -9,11 +9,11 @@
     "static/media/LinkedIn.svg": "/gandalfio/static/media/LinkedIn.31ba22a022a8106dd12f01d972894916.svg",
     "static/media/Mail.svg": "/gandalfio/static/media/Mail.7bcf762befe635cbfe0a759a31a38123.svg",
     "static/media/Facebook.svg": "/gandalfio/static/media/Facebook.3f6d7e9a838b6401a918ae7cb730d896.svg",
-    "main.0d0fa043.css.map": "/gandalfio/static/css/main.0d0fa043.css.map",
-    "main.ffa6fd02.js.map": "/gandalfio/static/js/main.ffa6fd02.js.map"
+    "main.18f057eb.css.map": "/gandalfio/static/css/main.18f057eb.css.map",
+    "main.d111bb52.js.map": "/gandalfio/static/js/main.d111bb52.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d0fa043.css",
-    "static/js/main.ffa6fd02.js"
+    "static/css/main.18f057eb.css",
+    "static/js/main.d111bb52.js"
   ]
 }
