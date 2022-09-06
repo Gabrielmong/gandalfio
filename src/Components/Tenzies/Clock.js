@@ -8,11 +8,11 @@ export default function Clock(props) {
     }
 
   return (
-    <div className="timer">
-      <span className="digits" style={styles}>
+    <div className={props.styles.timer}>
+      <span className={props.styles.digits} style={styles}>
         {("0" + Math.floor((props.time / 60000) % 60)).slice(-2)}:
       </span>
-      <span className="digits" style={styles}>
+      <span className={props.styles.digits} style={styles}>
         {("0" + Math.floor((props.time / 1000) % 60)).slice(-2)}
       </span>
     </div>

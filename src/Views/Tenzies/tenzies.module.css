@@ -1,3 +1,25 @@
+.containerDark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: rgb(37, 37, 37);
+  color: #a3a3a3;
+  overflow-y: auto;
+}
+
+.containerLight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: rgb(228, 228, 228);
+  color: black;
+  overflow-y: auto;
+}
+
 .tenzContainer {
   margin-top: 50px;
   display: flex;
@@ -5,7 +27,6 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 50px);
-  background-color: rgb(37, 37, 37);
   overflow-y: auto;
 }
 
@@ -87,7 +108,6 @@ main {
   width: 100%;
   justify-content: space-around;
   align-items: center;
-
 }
 
 .timer {

@@ -3,9 +3,9 @@ import Die from "../../Components/Tenzies/Die";
 import Clock from "../../Components/Tenzies/Clock";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
-import "./Tenzies.css";
+import styles from "./tenzies.module.css";
 
-function Tenzies() {
+function Tenzies(props) {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
   const [rolls, setRolls] = useState(0);
@@ -14,6 +14,22 @@ function Tenzies() {
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(0);
+  const [style, setStyle] = useState({});
+
+  useEffect(() => {
+    setStyle({
+      container : (props.theme ? styles.containerDark : styles.containerLight),
+      tenzContainer : styles.tenzContainer,
+      title : styles.title,
+      instructions : styles.instructions,
+      diceContainer : styles.diceContainer,
+      footDiv : styles.footDiv,
+      scoreIndicator : styles.scoreIndicator,
+      diceRoller : styles.diceRoller,
+      bestScore : styles.bestScore,
+      bestTime : styles.bestTime,
+    });
+  }, [props.theme]);
 
   useEffect(() => {
     if (localStorage.getItem("bestScore")) {
@@ -127,30 +143,31 @@ function Tenzies() {
       value={die.value}
       isHeld={die.isHeld}
       holdDie={() => holdDie(die.id)}
+      styles={styles}
     />
   ));
 
   return (
-    <div className="container">
-      <div className="tenzContainer">
+    <div className={style.container}>
+      <div className={style.tenzContainer}>
       <main>
         {tenzies && <Confetti />}
-        <h1 className="title">Tenzies</h1>
-        <p className="instructions">
+        <h1 className={style.title}>Tenzies</h1>
+        <p className={style.instructions}>
           Roll until all dice are the same. Click each die to freeze it at its
           current value between rolls.
         </p>
-        <div className="diceContainer">{diceElements}</div>
-        <div className="footDiv">
-          <p className="scoreIndicator">Rolls: {rolls}</p>
-          <button className="diceRoller" onClick={handleClick}>
+        <div className={style.diceContainer}>{diceElements}</div>
+        <div className={style.footDiv}>
+          <p className={style.scoreIndicator}>Rolls: {rolls}</p>
+          <button className={style.diceRoller} onClick={handleClick}>
             {tenzies ? "New Game" : "Roll"}
           </button>
-          <Clock time={time} isActive={isActive} isPaused={isPaused} />
+          <Clock time={time} isActive={isActive} isPaused={isPaused}  styles={styles}/>
         </div>
-        <div className="footDiv">
-          <p className="bestScore">Best Score: {bestScore}</p>
-          <p className="bestTime">Best Time: {bestTime}</p>
+        <div className={style.footDiv}>
+          <p className={style.bestScore}>Best Score: {bestScore}</p>
+          <p className={style.bestTime}>Best Time: {bestTime}</p>
         </div>
       </main>
       </div>

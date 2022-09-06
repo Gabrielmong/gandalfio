@@ -8,6 +8,22 @@ body {
   color: #a3a3a3;
 }
 
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-align: center;
+}
+
+.links {
+  background-color:  #0f1c2b;
+  color : #a3a3a3;
+  padding: 3px;
+  border-radius: 5px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

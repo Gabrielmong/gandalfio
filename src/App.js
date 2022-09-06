@@ -1,28 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar/Navbar";
-import Footer from "./Components/Footer/Footer";
-import Home from "./Views/Home/Home";
-import About from "./Views/About/About";
-import Contact from "./Views/Contact/Contact";
-import NotFound from "./Views/NotFound/NotFound";
-import Tenzies from "./Views/Tenzies/Tenzies";
-import Projects from "./Views/Projects/Projects";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
+import Home from "./Views/Home";
+import About from "./Views/About";
+import Contact from "./Views/Contact";
+import NotFound from "./Views/NotFound";
+import Tenzies from "./Views/Tenzies";
+import Projects from "./Views/Projects";
 
 export default function App() {
+
+  const [theme, setTheme] = React.useState(true);
+
+  useEffect(() => {
+    (localStorage.getItem("theme") === "true") ? setTheme(true) : setTheme(false);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const changeTheme = () => {
+    setTheme(prevMode => !prevMode);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar 
+        theme={theme}
+        changeTheme={changeTheme}/>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="projects" element={<Projects />} />
-        <Route path="tenzies" element={<Tenzies />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<Home theme={theme}/>} />
+        <Route path="about" element={<About theme={theme}/>} />
+        <Route path="contact" element={<Contact theme={theme}/>} />
+        <Route path="projects" element={<Projects theme={theme}/>} />
+        <Route path="tenzies" element={<Tenzies theme={theme}/>} />
+        <Route path="*" element={<NotFound theme={theme}/>} />
       </Routes>
-      <Footer />
+      <Footer theme={theme}/>
     </>
   );
 }

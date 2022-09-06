@@ -1,0 +1,92 @@
+.containerDark {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(100vh - 50px);
+  background-color: rgb(37, 37, 37);
+  color: #a3a3a3;
+  overflow-y: auto;
+}
+
+.containerLight {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(100vh - 50px);
+  background-color: rgb(228, 228, 228);
+  color: black;
+  overflow-y: auto;
+}
+
+.contentDark {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  color: inherit;
+}
+
+.contentLight {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  color: inherit;
+}
+
+a,
+h1 {
+  color: white;
+}
+
+.titleDark, .linkDark {
+  color: white;
+  font-weight: bold;
+}
+
+.titleLight, .linkLight {
+  color: rgb(77, 77, 77);
+  font-weight: bold;
+}
+
+.textDark {
+  color: #a3a3a3;
+}
+
+.textLight {
+  color: black;
+  
+}
+
+.music {
+  border-radius: 12px;
+  width: 80% !important;
+  height: 80px !important;
+}
+
+@media screen and (max-width: 700px) {
+  .containerDark {
+    margin-top: 75px;
+  }
+
+  .containerLight {
+    margin-top: 75px;
+  }
+  .contentDark {
+    margin-top: 4rem;
+    width: 90%;
+  }
+  .contentLight {
+    margin-top: 4rem;
+    width: 90%;
+  }
+}
+  

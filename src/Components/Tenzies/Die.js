@@ -7,8 +7,8 @@ function Die(props) {
   };
   return (
     <>
-      <div className="dieFace" style={styles} onClick={props.holdDie}>
-        <h2 className="unselectable">{props.value}</h2>
+      <div className={props.styles.dieFace} style={styles} onClick={props.holdDie}>
+        <h2 className={props.styles.unselectable}>{props.value}</h2>
       </div>
     </>
   );
