@@ -14,6 +14,12 @@ body {
   box-sizing: border-box;
 }
 
+.indicator {
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
 .navItems {
   display: flex;
   flex-direction: row;
@@ -37,7 +43,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid #0f1c2b;
   box-sizing: content-box;
 }
 
@@ -54,7 +60,7 @@ nav.dark .toggler--slider {
 }
 
 nav.dark .toggler--slider--circle {
-  background-color: black;
+  background-color: #0f1c2b;
 }
 
 .toggler--light {
@@ -171,6 +177,10 @@ nav.dark .toggler--slider {
   .top-nav {
     height: 75px;
     font-size: 1.3rem;
+  }
+
+  .indicator {
+    font-size: 1.1rem;
   }
   .menu-button-container {
     display: flex;
