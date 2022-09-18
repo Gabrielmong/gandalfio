@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
+import { Switch, FormControlLabel, Typography } from '@mui/material';
 import "./navbar.css";
 
 export default function Navbar(props) {
@@ -13,12 +14,20 @@ export default function Navbar(props) {
     <nav className={props.theme ? "dark top-nav" : "top-nav"}>
       <div className="navItems">
         <Link to="/">Gabriel Monge</Link>
-
         <div className="toggler">
-          <p className={"indicator"}>{props.theme ? "Dark" : "Light"}</p>
-          <div className="toggler--slider" onClick={props.changeTheme}>
-            <div className="toggler--slider--circle"></div>
-          </div>
+          <FormControlLabel
+            control={
+              <Switch 
+                checked={props.theme} 
+                onChange={props.changeTheme} 
+                color="default"/>}
+            label={
+              <Typography 
+                fontFamily={"-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;"} 
+                fontSize={16}
+                variant="body2">{props.theme ? "Dark" : "Light"}
+              </Typography>}
+              labelPlacement="start"/>
         </div>
       </div>
       <input id="menu-toggle" type="checkbox" checked={isNavOpen} />

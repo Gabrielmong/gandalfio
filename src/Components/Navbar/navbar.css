@@ -28,60 +28,6 @@ body {
   height: 100%;
   width: 100%;
 }
-.toggler {
-  display: flex;
-  align-items: center;
-}
-
-.toggler--slider {
-  width: 30px;
-  height: 17px;
-  background-color: #0f1c2b;
-  border-radius: 2rem;
-  margin-inline: 7px;
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid #0f1c2b;
-  box-sizing: content-box;
-}
-
-nav.dark .toggler--slider {
-  border-color: white;
-  background-color: #F5F5F5;
-}
-
-.toggler--slider--circle {
-  height: 15px;
-  width: 15px;
-  background-color: white;
-  border-radius: 50%;
-}
-
-nav.dark .toggler--slider--circle {
-  background-color: #0f1c2b;
-}
-
-.toggler--light {
-  color: #2B283A;
-}
-
-nav.dark .toggler--light {
-  color: #918E9B;
-}
-
-.toggler--dark {
-  color: #D5D4D8;
-}
-
-nav.dark .toggler-dark {
-  color: #FFFFFF;
-}
-
-nav.dark .toggler--slider {
-  justify-content: flex-end;
-}
 
 .top-nav {
   display: flex;
