@@ -29,6 +29,15 @@ body {
   width: 100%;
 }
 
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 60%;
+}
+
 .top-nav {
   display: flex;
   position: fixed;
@@ -37,7 +46,7 @@ body {
   width: 100%;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #464646;
   font-size: 1rem;
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -119,10 +128,18 @@ body {
   transform: rotate(-405deg);
 }
 
+.toggler {
+  margin-right: 1rem;
+}
+
 @media (max-width: 700px) {
   .top-nav {
     height: 75px;
     font-size: 1.3rem;
+  }
+
+  .navContainer {
+    width: 100%;
   }
 
   .indicator {

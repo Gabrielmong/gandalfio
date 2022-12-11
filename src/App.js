@@ -9,6 +9,7 @@ import Contact from "./Views/Contact";
 import NotFound from "./Views/NotFound";
 import Tenzies from "./Views/Tenzies";
 import Projects from "./Views/Projects";
+import Curriculum from "./Views/Curriculum";
 
 export default function App() {
 
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="contact" element={<Contact theme={theme}/>} />
         <Route path="projects" element={<Projects theme={theme}/>} />
         <Route path="tenzies" element={<Tenzies theme={theme}/>} />
+        <Route path="curriculum" element={<Curriculum theme={theme}/>} />
         <Route path="*" element={<NotFound theme={theme}/>} />
       </Routes>
       <Footer theme={theme}/>

@@ -7,10 +7,14 @@ export default [
     },
     {
         title: "Work",
-        description: "Im currently working as a Junior Software developer, starting to learn React, Node, Express, those kind of things, I'll definately get better with time as i really enjoy coding.",
+        description: "Im currently working as a Junior Software developer, I work everyday with React, Node.js, Express, GraphQL, and currently developing the full stack for an internal product.",
     },
     {
-        title: "Study",
-        description: "Currently getting a degree in Computer Science from the Fidélitas University, completing my second year, I've learned some Java, C++, Python, SQL, JavaScript, PHP, and also Project Management things, like Scrum, and Agile methodologies.",
+        title: "University",
+        description: "Currently getting a degree in Computer Science from the Fidélitas University, completing my second year, I've learned Java, C++, Python, SQL, JavaScript, PHP, C#, .NET and also Project Management related topics, like Scrum, and Agile methodologies.",
+    },
+    {
+        title: "Independent Study",
+        description: "I constantly trying to improve, watching courses on Udemy, YouTube, FreeCodeCamp, Pirple, etc, as a learning project I'm currently developing a finance tracker",
     }
 ]
