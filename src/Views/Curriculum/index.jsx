@@ -13,12 +13,15 @@ export default function Curriculum(props) {
       container: props.theme ? styles.containerDark : styles.containerLight,
       content: props.theme ? styles.contentDark : styles.contentLight,
       title: props.theme ? styles.titleDark : styles.titleLight,
+      button: props.theme ? styles.buttonDark : styles.buttonLight,
       headDescription: props.theme
         ? styles.headDescriptionDark
         : styles.headDescriptionLight,
       link: props.theme ? styles.linkDark : styles.linkLight,
     });
   }, [props.theme]);
+
+
 
   const skills = [
     "Microsoft Office",
@@ -49,10 +52,29 @@ export default function Curriculum(props) {
     "Videogames"
   ];
 
+  const handleDownload = () => {
+    fetch('Resume.pdf').then(response => {
+      response.blob().then(blob => {
+          // Creating new object of PDF file
+          const fileURL = window.URL.createObjectURL(blob);
+          // Setting various property values
+          let alink = document.createElement('a');
+          alink.href = fileURL;
+          alink.download = 'Resume.pdf';
+          alink.click();
+      })
+  })
+  }
+
   return (
     <>
       <div className={style.container}>
         <div className={style.content}>
+          <div>
+            <button onClick={handleDownload} className={style.button}>
+              Download Resume
+            </button>
+          </div>
           <div className={styles.document}>
             <div className={styles.documentHeader}>
               <h1 className={styles.headerTitle}>Gabriel Monge</h1>

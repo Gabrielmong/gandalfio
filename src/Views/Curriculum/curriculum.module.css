@@ -43,6 +43,24 @@
   
 }
 
+.buttonDark {
+  background-color: #666666;
+  color: white;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  border: none;
+}
+
+.buttonLight {
+  background-color: rgb(41, 41, 41);
+  color: white;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  border: none;
+}
+
 .document {
   background-color: #27303e;
   display: flex;
@@ -258,11 +276,11 @@
 
 @media screen and (max-width: 999px) {
   .containerDark {
-    margin-top: 75px;
+    margin-top: 2rem!important;
   }
 
   .containerLight {
-    margin-top: 75px;
+    margin-top: 2rem !important;
   }
   .contentDark {
     margin-top: 4rem;
