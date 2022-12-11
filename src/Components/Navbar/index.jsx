@@ -61,8 +61,8 @@ export default function Navbar(props) {
             </Link>
           </li>
           <li>
-            <Link to="/curriculum" onClick={handleClick}>
-              Curriculum
+            <Link to="/resume" onClick={handleClick}>
+              Resume
             </Link>
           </li>
         </ul>
