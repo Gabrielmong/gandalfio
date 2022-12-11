@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/gandalfio/static/css/main.b9b629c1.css",
+    "main.css": "/gandalfio/static/css/main.ab2f2b88.css",
     "main.js": "/gandalfio/static/js/main.10f7d98c.js",
     "static/media/Github.svg": "/gandalfio/static/media/Github.b0868cac27c4cd65cebbd301ca560b49.svg",
     "static/media/Instagram.svg": "/gandalfio/static/media/Instagram.64ef484196f5f028295279fdc3a45a02.svg",
@@ -11,11 +11,11 @@
     "static/media/Facebook.svg": "/gandalfio/static/media/Facebook.3f6d7e9a838b6401a918ae7cb730d896.svg",
     "static/media/Location.svg": "/gandalfio/static/media/Location.29bfd1aee23f839cec90f9423ae4ee6e.svg",
     "static/media/Phone.svg": "/gandalfio/static/media/Phone.2926ef4d68856398e83fced5291f72a2.svg",
-    "main.b9b629c1.css.map": "/gandalfio/static/css/main.b9b629c1.css.map",
+    "main.ab2f2b88.css.map": "/gandalfio/static/css/main.ab2f2b88.css.map",
     "main.10f7d98c.js.map": "/gandalfio/static/js/main.10f7d98c.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9b629c1.css",
+    "static/css/main.ab2f2b88.css",
     "static/js/main.10f7d98c.js"
   ]
 }
