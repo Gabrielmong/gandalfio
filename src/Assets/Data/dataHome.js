@@ -7,7 +7,7 @@ export default [
     },
     {
         title: "Work",
-        description: "Im currently working as a Junior Software developer, I work everyday with React, Node.js, Express, GraphQL, and currently developing the full stack for an internal product.",
+        description: "Im currently working as a Junior Software developer, I work everyday with React, Node.js, Express, GraphQL, and currently developing the full stack application for an internal product.",
     },
     {
         title: "University",
@@ -15,6 +15,6 @@ export default [
     },
     {
         title: "Independent Study",
-        description: "I constantly trying to improve, watching courses on Udemy, YouTube, FreeCodeCamp, Pirple, etc, as a learning project I'm currently developing a finance tracker",
+        description: "I'm constantly trying to improve, watching courses on Udemy, YouTube, FreeCodeCamp, Pirple, etc. As a learning project I'm currently developing a finance tracker.",
     }
 ]

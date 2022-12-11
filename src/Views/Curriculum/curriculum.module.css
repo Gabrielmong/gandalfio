@@ -196,11 +196,11 @@
   min-width: 50%;
 }
 
-ul {
+.modulesItem {
   list-style: none;
 }
 
-ul li::before {
+.modulesList .modulesItem::before {
   content: "\2022";
   color: #71bab6;
   font-weight: bold;
