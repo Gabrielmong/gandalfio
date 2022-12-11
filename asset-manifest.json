@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gandalfio/static/css/main.94328e24.css",
-    "main.js": "/gandalfio/static/js/main.b77c4016.js",
+    "main.css": "/gandalfio/static/css/main.d5eb80a7.css",
+    "main.js": "/gandalfio/static/js/main.e3b5e1e0.js",
     "static/media/Github.svg": "/gandalfio/static/media/Github.b0868cac27c4cd65cebbd301ca560b49.svg",
     "static/media/Instagram.svg": "/gandalfio/static/media/Instagram.64ef484196f5f028295279fdc3a45a02.svg",
     "static/media/Twitter.svg": "/gandalfio/static/media/Twitter.5f44be679fabf502b066eed57a87f79b.svg",
@@ -9,11 +9,13 @@
     "static/media/LinkedIn.svg": "/gandalfio/static/media/LinkedIn.31ba22a022a8106dd12f01d972894916.svg",
     "static/media/Mail.svg": "/gandalfio/static/media/Mail.7bcf762befe635cbfe0a759a31a38123.svg",
     "static/media/Facebook.svg": "/gandalfio/static/media/Facebook.3f6d7e9a838b6401a918ae7cb730d896.svg",
-    "main.94328e24.css.map": "/gandalfio/static/css/main.94328e24.css.map",
-    "main.b77c4016.js.map": "/gandalfio/static/js/main.b77c4016.js.map"
+    "static/media/Location.svg": "/gandalfio/static/media/Location.29bfd1aee23f839cec90f9423ae4ee6e.svg",
+    "static/media/Phone.svg": "/gandalfio/static/media/Phone.2926ef4d68856398e83fced5291f72a2.svg",
+    "main.d5eb80a7.css.map": "/gandalfio/static/css/main.d5eb80a7.css.map",
+    "main.e3b5e1e0.js.map": "/gandalfio/static/js/main.e3b5e1e0.js.map"
   },
   "entrypoints": [
-    "static/css/main.94328e24.css",
-    "static/js/main.b77c4016.js"
+    "static/css/main.d5eb80a7.css",
+    "static/js/main.e3b5e1e0.js"
   ]
 }
