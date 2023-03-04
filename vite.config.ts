@@ -5,6 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: 'https://gabrielmong.github.io/gandalfio/',
   resolve: {
     alias: {
       pages : path.resolve('src/pages'),
