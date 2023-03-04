@@ -10,22 +10,22 @@
     "deploy": "vite build && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@mui/icons-material": "^5.11.11",
-    "@mui/material": "^5.11.11",
-    "@types/node": "^18.14.6",
-    "path": "^0.12.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.2",
-    "react-scroll": "^1.8.9"
+    "@emotion/react": "11.10.6",
+    "@emotion/styled": "11.10.6",
+    "@mui/icons-material": "5.11.11",
+    "@mui/material": "5.11.11",
+    "@types/node": "18.14.6",
+    "path": "0.12.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.8.2",
+    "react-scroll": "1.8.9"
   },
   "devDependencies": {
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@vitejs/plugin-react": "^3.1.0",
-    "typescript": "^4.9.3",
-    "vite": "^4.1.0"
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "@vitejs/plugin-react": "3.1.0",
+    "typescript": "4.9.3",
+    "vite": "4.1.0"
   }
 }

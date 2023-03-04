@@ -18,6 +18,28 @@ function App() {
   };
 
   const theme = createTheme({
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            scrollbarColor: currentTheme === "dark" ? "primary" : "secondary",
+            "&::-webkit-scrollbar": {
+              width: "0.5rem",
+              height: "0.5rem",
+            },
+            "&::-webkit-scrollbar-track": {
+              background: currentTheme === "dark" ? "#323232" : "#0f1c2b",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: currentTheme === "dark" ? "#474747" : "#314463",
+              '&:hover': {
+                background: currentTheme === "dark" ? "#666666" : "#345282",
+              },
+            },
+          },
+        },
+      },
+    },
     palette: {
       mode: currentTheme,
       primary:
