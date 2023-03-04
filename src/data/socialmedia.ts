@@ -34,7 +34,7 @@ export const socialMediaData = [
     },
     {
         name: "Instagram",
-        url: "https://www.instagram.com/gabrielmong/",
+        url: "https://www.instagram.com/gabriel_mong/",
         image: instagram,
     },
     {
