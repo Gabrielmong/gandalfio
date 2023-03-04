@@ -52,7 +52,7 @@ export const homeData = {
         {
             title: 'Algo Visualizer',
             description:
-            `A webpage that visualizes some algorithms, made on Python`,
+            `Visualizes some sorting algorithms, made on Python`,
             link: 'https://github.com/Gabrielmong/Code-Playground/blob/master/Python/algosVisualizer.py'
         },
     ]
