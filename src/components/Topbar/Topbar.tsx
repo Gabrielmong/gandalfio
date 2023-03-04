@@ -51,7 +51,7 @@ export const Topbar = ({
         <Box sx={{ flexGrow: 1 }}>
           <Button
             color="inherit"
-            onClick={() => handleLinkClick("/")}
+            onClick={() => handleLinkClick("/gandalfio/")}
             sx={{ textTransform: "none" }}
           >
             <Typography variant="h6">{title}</Typography>

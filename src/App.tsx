@@ -19,25 +19,34 @@ function App() {
 
   const theme = createTheme({
     palette: {
-      mode : currentTheme,
-      primary: currentTheme === "dark" ? {
-        main: "#dddddd",
-      } : {
-        main: "#0f1c2b",
-      },
-      secondary: currentTheme === "dark" ? {
-        main: "#474747",
-      } : {
-        main: "#3ea6ff",
-      },
-      background: currentTheme === "dark" ? {
-        default: "#121212",
-        paper: "#1e1e1e",
-      } : {
-        default: "##ededed",
-        paper: "#fff",
-      },      
-    }
+      mode: currentTheme,
+      primary:
+        currentTheme === "dark"
+          ? {
+              main: "#dddddd",
+            }
+          : {
+              main: "#0f1c2b",
+            },
+      secondary:
+        currentTheme === "dark"
+          ? {
+              main: "#474747",
+            }
+          : {
+              main: "#3ea6ff",
+            },
+      background:
+        currentTheme === "dark"
+          ? {
+              default: "#121212",
+              paper: "#1e1e1e",
+            }
+          : {
+              default: "##ededed",
+              paper: "#fff",
+            },
+    },
   });
 
   return (
@@ -52,15 +61,17 @@ function App() {
           themeSwich={handleThemeChange}
           title="Gandalfio"
           navItems={[
-            { label: "Home", path: "/" },
-            { label: "About", path: "/about" },
-            { label: "Contact", path: "/contact" },
+            { label: "Home", path: "/gandalfio/" },
+            { label: "About", path: "/gandalfio/about" },
+            { label: "Contact", path: "/gandalfio/contact" },
           ]}
         />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/gandalfio/">
+            <Route path="/gandalfio/" element={<Home />} />
+            <Route path="/gandalfio/about" element={<About />} />
+            <Route path="/gandalfio/contact" element={<Contact />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>

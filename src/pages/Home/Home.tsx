@@ -61,7 +61,7 @@ export const Home = (): ReactElement => {
         </Box>
         <Grid container spacing={2}>
           {homeData.projects.map((project) => (
-            <Grid item xs={12} sm={6} md={4} lg={4}>
+            <Grid item xs={12} sm={6} md={4} lg={4} key={project.title}>
               <Card
                 title={project.title}
                 description={project.description}

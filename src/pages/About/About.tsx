@@ -34,11 +34,12 @@ export const About = (): ReactElement => {
         <Typography variant="h2">{aboutData.title}</Typography>
         <Typography variant="h6">{aboutData.description}</Typography>
       </Box>
-      {aboutData.paragraphs.map((paragraph) => (
+      {aboutData.paragraphs.map((paragraph, index) => (
         <Box
           sx={{
             paddingBottom: "1rem",
           }}
+          key={index}
         >
           <Typography variant="h6">{paragraph}</Typography>
         </Box>

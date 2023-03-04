@@ -41,7 +41,7 @@ export const Footer = (): ReactElement => {
       >
         <Grid container spacing={2}>
           {socialMediaData.map((item) => (
-            <Grid item>
+            <Grid item key={item.name}>
               <Link to={item.url} target="_blank">
                 <img
                   src={item.image}

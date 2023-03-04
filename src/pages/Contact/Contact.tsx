@@ -61,6 +61,7 @@ export const Contact = (): ReactElement => {
       >
         {contactData.socialMedia.map((item) => (
           <Box
+            key={item.name}
             sx={{
               paddingBottom: "1rem",
               display: "flex",
