@@ -22,9 +22,10 @@ function App() {
     const theme = localStorage.getItem("theme");
     if (theme) {
       setCurrentTheme(theme as "dark" | "light");
+    } else {
+      localStorage.setItem("theme", "dark");
     }
   }, []);
-  
 
   const theme = createTheme({
     components: {
@@ -41,7 +42,7 @@ function App() {
             },
             "&::-webkit-scrollbar-thumb": {
               background: currentTheme === "dark" ? "#474747" : "#314463",
-              '&:hover': {
+              "&:hover": {
                 background: currentTheme === "dark" ? "#666666" : "#345282",
               },
             },
