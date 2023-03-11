@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, About, Contact } from "pages";
 import { Topbar, Footer } from "components";
@@ -15,7 +15,16 @@ function App() {
 
   const handleThemeChange = () => {
     setCurrentTheme(currentTheme === "dark" ? "light" : "dark");
+    localStorage.setItem("theme", currentTheme === "dark" ? "light" : "dark");
   };
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      setCurrentTheme(theme as "dark" | "light");
+    }
+  }, []);
+  
 
   const theme = createTheme({
     components: {

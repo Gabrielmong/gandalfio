@@ -21,16 +21,28 @@ export const Contact = (): ReactElement => {
     }
   };
 
-  const handleDownloadClick = () => {
-    fetch("Resume.pdf").then((response) => {
-      response.blob().then((blob) => {
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "Resume.pdf";
-        link.click();
+  const handleDownloadClick = (resume: string) => {
+    if (resume === "pretty") {
+      fetch("PrettyResume.pdf").then((response) => {
+        response.blob().then((blob) => {
+          const url = window.URL.createObjectURL(new Blob([blob]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "PrettyResume.pdf";
+          link.click();
+        });
       });
-    });
+    } else {
+      fetch("BoringResume.pdf").then((response) => {
+        response.blob().then((blob) => {
+          const url = window.URL.createObjectURL(new Blob([blob]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "BoringResume.pdf";
+          link.click();
+        });
+      });
+    }
   };
 
   return (
@@ -100,13 +112,24 @@ export const Contact = (): ReactElement => {
         </Typography>
         <Button
           variant="outlined"
-          onClick={handleDownloadClick}
+          onClick={() => handleDownloadClick("pretty")}
+          sx={{
+            marginTop: "1rem",
+            color: "inherit",
+            marginRight: "1rem",
+          }}
+        >
+          Download Pretty Resume
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => handleDownloadClick("boring")}
           sx={{
             marginTop: "1rem",
             color: "inherit",
           }}
         >
-          Download Resume
+          Download Boring Resume
         </Button>
       </Box>
     </Container>
