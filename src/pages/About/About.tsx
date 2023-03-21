@@ -3,18 +3,9 @@ import { ReactElement } from "react";
 import { aboutData } from "data/about";
 
 export const About = (): ReactElement => {
-  const handleDownloadClick = () => {
-    fetch("Resume.pdf").then((response) => {
-      response.blob().then((blob) => {
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "Resume.pdf";
-        link.click();
-      });
-    });
+  const handleClick = () => {
+    window.open("https://github.com/Gabrielmong", "_blank");
   };
-
   return (
     <Container
       sx={{
@@ -49,8 +40,8 @@ export const About = (): ReactElement => {
           paddingBottom: "1rem",
         }}
       >
-        <Button variant="outlined" onClick={handleDownloadClick}>
-          Download Resume
+        <Button variant="outlined" onClick={handleClick}>
+          Look at my github profile
         </Button>
       </Box>
     </Container>

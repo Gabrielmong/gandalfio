@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Home, About, Contact } from "pages";
 import { Topbar, Footer } from "components";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -84,7 +84,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
+      <HashRouter>
         <Topbar
           navAnchor={navAnchor}
           handleNavAnchor={handleNavAnchor}
@@ -93,20 +93,20 @@ function App() {
           themeSwich={handleThemeChange}
           title="Gandalfio"
           navItems={[
-            { label: "Home", path: "/gandalfio/" },
-            { label: "About", path: "/gandalfio/about" },
-            { label: "Contact", path: "/gandalfio/contact" },
+            { label: "Home", path: "/" },
+            { label: "About", path: "/about" },
+            { label: "Contact", path: "/contact" },
           ]}
         />
         <Routes>
-          <Route path="/gandalfio/">
-            <Route path="/gandalfio/" element={<Home />} />
-            <Route path="/gandalfio/about" element={<About />} />
-            <Route path="/gandalfio/contact" element={<Contact />} />
+          <Route path="/">
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
