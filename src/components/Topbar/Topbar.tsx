@@ -9,11 +9,11 @@ import {
   Menu,
   MenuItem,
   Switch,
-} from "@mui/material";
-import { Menu as MenuIcon, Close as CloseIcon } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import { ReactElement, useEffect, useState } from "react";
-import { TopbarProps } from "./Topbar.model";
+} from '@mui/material';
+import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { ReactElement, useEffect, useRef, useState } from 'react';
+import { TopbarProps } from './Topbar.model';
 
 export const Topbar = ({
   navAnchor,
@@ -25,6 +25,8 @@ export const Topbar = ({
   themeSwich,
 }: TopbarProps): ReactElement => {
   const [isMobile, setIsMobile] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
   const navigation = useNavigate();
 
   const handleLinkClick = (path: string) => {
@@ -40,29 +42,46 @@ export const Topbar = ({
         setIsMobile(false);
       }
     };
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     handleResize();
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  window.onscroll = () => {
+    if (navRef.current) {
+      if (window.pageYOffset > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    }
+  };
+
   return (
-    <AppBar position="sticky" color="primary">
+    <AppBar
+      position="sticky"
+      ref={navRef}
+      color={scrolled ? 'primary' : 'secondary'}
+      sx={{
+        transition: 'background-color 0.5s ease',
+      }}
+    >
       <Toolbar>
         <Box sx={{ flexGrow: 1 }}>
           <Button
             color="inherit"
-            onClick={() => handleLinkClick("/gandalfio/")}
-            sx={{ textTransform: "none" }}
+            onClick={() => handleLinkClick('/')}
+            sx={{ textTransform: 'none' }}
           >
             <Typography variant="h6">{title}</Typography>
           </Button>
         </Box>
 
         <Switch
-          checked={currentTheme === "dark"}
+          checked={currentTheme === 'dark'}
           onChange={themeSwich}
           color="default"
-          inputProps={{ "aria-label": "checkbox with default color" }}
+          inputProps={{ 'aria-label': 'checkbox with default color' }}
         />
 
         {isMobile ? (
@@ -98,6 +117,7 @@ export const Topbar = ({
                 key={item.label}
                 color="inherit"
                 onClick={() => handleLinkClick(item.path)}
+                sx={{ textTransform: 'none' }}
               >
                 {item.label}
               </Button>

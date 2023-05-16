@@ -1,4 +1,4 @@
-import { CardProps as MUICardProps } from "@mui/material";
+import { CardProps as MUICardProps } from '@mui/material';
 
 export interface CardProps extends MUICardProps {
   title: string;

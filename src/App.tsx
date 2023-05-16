@@ -1,29 +1,33 @@
-import { useEffect, useState } from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
-import { Home, About, Contact } from "pages";
-import { Topbar, Footer } from "components";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
+import { useEffect, useState } from 'react';
+import { HashRouter } from 'react-router-dom';
+import { Topbar, Footer } from 'components';
+import {
+  ThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+} from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+import { AnimatedRoutes } from 'components/AnimatedRoutes';
 
 function App() {
   const [navAnchor, setNavAnchor] = useState<null | HTMLElement>(null);
-  const [currentTheme, setCurrentTheme] = useState<"dark" | "light">("dark");
+  const [currentTheme, setCurrentTheme] = useState<'dark' | 'light'>('dark');
 
   const handleNavAnchor = (event: React.MouseEvent<HTMLElement>) => {
     setNavAnchor(navAnchor ? null : event.currentTarget);
   };
 
   const handleThemeChange = () => {
-    setCurrentTheme(currentTheme === "dark" ? "light" : "dark");
-    localStorage.setItem("theme", currentTheme === "dark" ? "light" : "dark");
+    setCurrentTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    localStorage.setItem('theme', currentTheme === 'dark' ? 'light' : 'dark');
   };
 
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
+    const theme = localStorage.getItem('theme');
     if (theme) {
-      setCurrentTheme(theme as "dark" | "light");
+      setCurrentTheme(theme as 'dark' | 'light');
     } else {
-      localStorage.setItem("theme", "dark");
+      localStorage.setItem('theme', 'dark');
     }
   }, []);
 
@@ -32,18 +36,18 @@ function App() {
       MuiCssBaseline: {
         styleOverrides: {
           body: {
-            scrollbarColor: currentTheme === "dark" ? "primary" : "secondary",
-            "&::-webkit-scrollbar": {
-              width: "0.5rem",
-              height: "0.5rem",
+            scrollbarColor: currentTheme === 'dark' ? 'primary' : 'secondary',
+            '&::-webkit-scrollbar': {
+              width: '0.5rem',
+              height: '0.5rem',
             },
-            "&::-webkit-scrollbar-track": {
-              background: currentTheme === "dark" ? "#323232" : "#0f1c2b",
+            '&::-webkit-scrollbar-track': {
+              background: currentTheme === 'dark' ? '#323232' : '#0f1c2b',
             },
-            "&::-webkit-scrollbar-thumb": {
-              background: currentTheme === "dark" ? "#474747" : "#314463",
-              "&:hover": {
-                background: currentTheme === "dark" ? "#666666" : "#345282",
+            '&::-webkit-scrollbar-thumb': {
+              background: currentTheme === 'dark' ? '#474747' : '#314463',
+              '&:hover': {
+                background: currentTheme === 'dark' ? '#666666' : '#345282',
               },
             },
           },
@@ -53,36 +57,41 @@ function App() {
     palette: {
       mode: currentTheme,
       primary:
-        currentTheme === "dark"
+        currentTheme === 'dark'
           ? {
-              main: "#dddddd",
+              main: '#dddddd',
             }
           : {
-              main: "#0f1c2b",
+              main: '#0f1c2b',
             },
       secondary:
-        currentTheme === "dark"
+        currentTheme === 'dark'
           ? {
-              main: "#474747",
+              main: '#474747',
             }
           : {
-              main: "#3ea6ff",
+              main: '#123d61',
             },
       background:
-        currentTheme === "dark"
+        currentTheme === 'dark'
           ? {
-              default: "#121212",
-              paper: "#1e1e1e",
+              default: '#121212',
+              paper: '#1e1e1e',
             }
           : {
-              default: "##ededed",
-              paper: "#fff",
+              default: '#ededed',
+              paper: '#fff',
             },
+    },
+    typography: {
+      fontFamily: 'Poppins',
     },
   });
 
+  const responsiveTheme = responsiveFontSizes(theme);
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={responsiveTheme}>
       <CssBaseline />
       <HashRouter>
         <Topbar
@@ -93,19 +102,13 @@ function App() {
           themeSwich={handleThemeChange}
           title="Gandalfio"
           navItems={[
-            { label: "Home", path: "/" },
-            { label: "About", path: "/about" },
-            { label: "Contact", path: "/contact" },
+            { label: 'Home', path: '/' },
+            { label: 'About', path: '/about' },
+            { label: 'Contact', path: '/contact' },
           ]}
         />
-        <Routes>
-          <Route path="/">
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
-        </Routes>
-        <Footer />
+        <AnimatedRoutes />
+        <Footer currentTheme={currentTheme} />
       </HashRouter>
     </ThemeProvider>
   );
