@@ -30,7 +30,7 @@ export const homeData = {
     },
     {
       title: 'Code Playground',
-      description: `Stupid little scripts i do to practice`,
+      description: `Stupid little scripts i do to practice, contains Python and JavaScript scripts mainly, but also some C/C++, Java, Markdown, Powershell and shell scripts. `,
       link: 'https://github.com/Gabrielmong/Code-Playground',
     },
     {
@@ -47,6 +47,11 @@ export const homeData = {
       title: 'Algo Visualizer JS',
       description: `Visualizes some sorting algorithms, made on JavaScript`,
       link: 'https://gabrielmong.github.io/algo-visualizer/',
+    },
+    {
+      title: 'The Crops Chronicles',
+      description: `This is a game made in Unity and C#, it's a 3d "farming" game, that actually has fighting mechanics for some reason, assigned as a final project for "Diseño de Videojuegos" course.`,
+      link: 'https://github.com/Gabrielmong/diseno-videojuegos-g2',
     },
   ],
 };

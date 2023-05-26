@@ -1,10 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react';
-import {
-  Container,
-  Box,
-  Typography,
-  Grid,
-} from '@mui/material';
+import { Container, Box, Typography, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { homeData } from 'data';
 import { Card } from 'components/Card';
@@ -51,6 +46,10 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
           duration: 1.2,
         },
       });
+    }
+
+    if (!inView) {
+      setAnimationDone(false);
     }
   }, [controls, inView]);
 
@@ -131,9 +130,11 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
                 paddingBottom: '1rem',
               }}
             >
-              <Typography variant="h3">Projects</Typography>
+              <Typography variant="h3" gutterBottom>
+                Projects
+              </Typography>
             </Box>
-            <Grid container spacing={2} paddingBottom={5}>
+            <Grid container spacing={2} paddingBottom={15}>
               {homeData.projects.map((project, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={4} key={project.title}>
                   {inView ? (

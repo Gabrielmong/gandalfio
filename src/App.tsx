@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { HashRouter } from 'react-router-dom';
 import { Topbar, Footer } from 'components';
 import {
@@ -9,10 +9,15 @@ import {
 import { CssBaseline } from '@mui/material';
 import { AnimatedRoutes } from 'components/AnimatedRoutes';
 import { BackToTop } from 'components/BackToTop/BackToTop';
+import { darkTheme, lightTheme } from 'theme';
 
 function App() {
   const [navAnchor, setNavAnchor] = useState<null | HTMLElement>(null);
   const [currentTheme, setCurrentTheme] = useState<'dark' | 'light'>('dark');
+
+  const theme = useMemo(() => {
+    return currentTheme === 'light' ? lightTheme : darkTheme;
+  }, [currentTheme]);
 
   const handleNavAnchor = (event: React.MouseEvent<HTMLElement>) => {
     setNavAnchor(navAnchor ? null : event.currentTarget);
@@ -32,67 +37,8 @@ function App() {
     }
   }, []);
 
-  const theme = createTheme({
-    components: {
-      MuiCssBaseline: {
-        styleOverrides: {
-          body: {
-            scrollbarColor: currentTheme === 'dark' ? 'primary' : 'secondary',
-            '&::-webkit-scrollbar': {
-              width: '0.5rem',
-              height: '0.5rem',
-            },
-            '&::-webkit-scrollbar-track': {
-              background: currentTheme === 'dark' ? '#323232' : '#0f1c2b',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              background: currentTheme === 'dark' ? '#474747' : '#314463',
-              '&:hover': {
-                background: currentTheme === 'dark' ? '#666666' : '#345282',
-              },
-            },
-          },
-        },
-      },
-    },
-    palette: {
-      mode: currentTheme,
-      primary:
-        currentTheme === 'dark'
-          ? {
-              main: '#dddddd',
-            }
-          : {
-              main: '#0f1c2b',
-            },
-      secondary:
-        currentTheme === 'dark'
-          ? {
-              main: '#474747',
-            }
-          : {
-              main: '#123d61',
-            },
-      background:
-        currentTheme === 'dark'
-          ? {
-              default: '#121212',
-              paper: '#1e1e1e',
-            }
-          : {
-              default: '#ededed',
-              paper: '#fff',
-            },
-    },
-    typography: {
-      fontFamily: 'Poppins',
-    },
-  });
-
-  const responsiveTheme = responsiveFontSizes(theme);
-
   return (
-    <ThemeProvider theme={responsiveTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <HashRouter>
         <Topbar

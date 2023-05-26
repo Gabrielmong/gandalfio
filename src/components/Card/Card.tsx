@@ -3,6 +3,8 @@ import {
   CardContent,
   CardActions,
   ButtonBase,
+  CardHeader,
+  useTheme,
 } from '@mui/material';
 import { Typography, Button } from '@mui/material';
 import { ReactElement } from 'react';
@@ -11,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Card = ({ title, description, link }: CardProps): ReactElement => {
   const navigation = useNavigate();
+  const theme = useTheme();
 
   const handleLinkClick = (path: string) => {
     if (path.startsWith('http')) {
@@ -19,6 +22,20 @@ export const Card = ({ title, description, link }: CardProps): ReactElement => {
       navigation(path);
     }
   };
+
+  const clickMeTexts: string[] = [
+    'Click me to see me',
+    'Click me to learn more',
+    'Click me to see more',
+    'Click me to maybe see a preview, probably not though',
+    'Hi, I\'m a clickable card',
+    'I just put some random text here',
+    'I\'m a card, I\'m clickable',
+    'clickclickclick',
+    'Touch me',
+    'This one is pretty cool',
+  ];
+
   return (
     <ButtonBase
       onClick={() => handleLinkClick(link)}
@@ -40,8 +57,14 @@ export const Card = ({ title, description, link }: CardProps): ReactElement => {
           justifyContent: 'space-between',
         }}
       >
+        <CardHeader
+          title={title}
+          sx={{
+            backgroundColor: theme.palette.secondary.main,
+            color: theme.palette.secondary.contrastText,
+          }}
+        />
         <CardContent>
-          <Typography variant="h4">{title}</Typography>
           <Typography>{description}</Typography>
         </CardContent>
         <CardActions
@@ -49,15 +72,13 @@ export const Card = ({ title, description, link }: CardProps): ReactElement => {
             justifyContent: 'flex-end',
           }}
         >
-          <Button
-            variant="outlined"
-            onClick={() => handleLinkClick(link)}
+          <Typography
             sx={{
-              textTransform: 'none',
+              color: theme.palette.secondary.main,
             }}
           >
-            View
-          </Button>
+            {clickMeTexts[Math.floor(Math.random() * clickMeTexts.length)]}
+          </Typography>
         </CardActions>
       </MUICard>
     </ButtonBase>
