@@ -1,4 +1,9 @@
-import { Card as MUICard, CardContent, CardActions } from '@mui/material';
+import {
+  Card as MUICard,
+  CardContent,
+  CardActions,
+  ButtonBase,
+} from '@mui/material';
 import { Typography, Button } from '@mui/material';
 import { ReactElement } from 'react';
 import { CardProps } from './Card.model';
@@ -15,33 +20,46 @@ export const Card = ({ title, description, link }: CardProps): ReactElement => {
     }
   };
   return (
-    <MUICard
+    <ButtonBase
+      onClick={() => handleLinkClick(link)}
       sx={{
+        width: '100%',
         height: '100%',
+        borderRadius: '5px',
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
       }}
     >
-      <CardContent>
-        <Typography variant="h4">{title}</Typography>
-        <Typography>{description}</Typography>
-      </CardContent>
-      <CardActions
+      <MUICard
         sx={{
-          justifyContent: 'flex-end',
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
         }}
       >
-        <Button
-          variant="outlined"
-          onClick={() => handleLinkClick(link)}
+        <CardContent>
+          <Typography variant="h4">{title}</Typography>
+          <Typography>{description}</Typography>
+        </CardContent>
+        <CardActions
           sx={{
-            textTransform: 'none',
+            justifyContent: 'flex-end',
           }}
         >
-          View
-        </Button>
-      </CardActions>
-    </MUICard>
+          <Button
+            variant="outlined"
+            onClick={() => handleLinkClick(link)}
+            sx={{
+              textTransform: 'none',
+            }}
+          >
+            View
+          </Button>
+        </CardActions>
+      </MUICard>
+    </ButtonBase>
   );
 };

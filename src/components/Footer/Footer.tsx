@@ -5,6 +5,7 @@ import {
   Box,
   Typography,
   Grid,
+  keyframes,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { ReactElement, useEffect, useState } from 'react';
@@ -17,20 +18,39 @@ export const Footer = ({ currentTheme }: FooterProps): ReactElement => {
     to: '#FF8E53',
   });
 
+  const [otherGradient, setOtherGradient] = useState({
+    from: '#FE6B8B',
+    to: '#FF8E53',
+  });
+
   useEffect(() => {
-    console.log(currentTheme);
     if (currentTheme === 'dark') {
       setGradient({
         from: '#000000',
         to: '#434343',
       });
+
+      setOtherGradient({
+        from: '#444444',
+        to: '#ffffff',
+      });
+
     } else {
       setGradient({
         from: '#0f1c2b',
         to: '#275882',
       });
+
+      setOtherGradient({
+        from: '#12253b',
+        to: '#ffffff',
+      });
     }
   }, [currentTheme]);
+
+  const movingTitle = keyframes`
+    to { background-position: 270% center; }
+`;
 
   return (
     <Container
@@ -52,7 +72,21 @@ export const Footer = ({ currentTheme }: FooterProps): ReactElement => {
           to="https://github.com/Gabrielmong"
           style={{ textDecoration: 'none', color: 'grey' }}
         >
-          Gabriel Monge
+          <Typography
+            variant="h6"
+            sx={{
+              display: 'inline',
+              color: 'white',
+              textDecoration: 'none',
+              background: `linear-gradient(90deg, ${otherGradient.from}, ${otherGradient.to}, ${otherGradient.from})`,
+                animation: `${movingTitle} 10s infinite linear`,
+                animationFillMode: 'forwards',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                lineHeight: '1.5',
+            }}
+          >Gabriel Monge</Typography>
         </Link>
       </Typography>
       <Box

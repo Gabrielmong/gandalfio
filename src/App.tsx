@@ -8,6 +8,7 @@ import {
 } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { AnimatedRoutes } from 'components/AnimatedRoutes';
+import { BackToTop } from 'components/BackToTop/BackToTop';
 
 function App() {
   const [navAnchor, setNavAnchor] = useState<null | HTMLElement>(null);
@@ -107,7 +108,9 @@ function App() {
             { label: 'Contact', path: '/contact' },
           ]}
         />
-        <AnimatedRoutes />
+        <AnimatedRoutes currentTheme={currentTheme} />
+
+        <BackToTop />
         <Footer currentTheme={currentTheme} />
       </HashRouter>
     </ThemeProvider>
