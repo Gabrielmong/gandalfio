@@ -238,7 +238,7 @@ export const About = (): ReactElement => {
                   <StaggeredChip
                     delay={0.3 * index}
                     key={index}
-                    label={tech.name}
+                    label={tech.tech}
                     ready={true}
                     onClick={() => handleClick(tech.link || '')}
                     sx={{

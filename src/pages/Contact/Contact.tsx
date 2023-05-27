@@ -1,10 +1,4 @@
-import {
-  Container,
-  Button,
-  Box,
-  Typography,
-  Grid,
-} from '@mui/material';
+import { Container, Button, Box, Typography, Grid } from '@mui/material';
 import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { contactData } from 'data';
@@ -14,11 +8,7 @@ export const Contact = (): ReactElement => {
   const navigation = useNavigate();
 
   const handleLinkClick = (path: string) => {
-    if (path.startsWith('http')) {
-      window.open(path, '_blank');
-    } else {
-      navigation(path);
-    }
+    window.open(path, '_blank');
   };
 
   const handleDownloadClick = (resume: string) => {
