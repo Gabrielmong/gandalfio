@@ -16,6 +16,8 @@ import { ReactElement, useEffect, useState } from 'react';
 import { aboutData } from 'data/about';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { StaggeredChip, StaggeredListItem } from 'components';
+import { Tech } from 'models';
 
 export const About = (): ReactElement => {
   const [isMobile, setIsMobile] = useState(false);
@@ -232,36 +234,24 @@ export const About = (): ReactElement => {
                   paddingTop: '1rem',
                 }}
               >
-                {aboutData?.myStack?.map((tech, index) => (
-                  <>
-                    {inView && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 0 }}
-                        animate={{ opacity: 1, y: 1 }}
-                        transition={{
-                          duration: 0.7,
-                          delay: 0.5 * index,
-                        }}
-                        style={{ display: 'inline-block' }}
-                      >
-                        <Chip
-                          key={index}
-                          label={tech.tech}
-                          avatar={
-                            <img
-                              src={tech.icon}
-                              alt={tech.tech}
-                              style={{ width: '1.5rem', height: '1.5rem' }}
-                            />
-                          }
-                          onClick={() => handleClick(tech.link)}
-                          sx={{
-                            margin: '0.5rem',
-                          }}
-                        />
-                      </motion.div>
-                    )}
-                  </>
+                {aboutData?.myStack?.map((tech: Tech, index) => (
+                  <StaggeredChip
+                    delay={0.3 * index}
+                    key={index}
+                    label={tech.name}
+                    ready={true}
+                    onClick={() => handleClick(tech.link || '')}
+                    sx={{
+                      margin: '0.3rem',
+                    }}
+                    avatar={
+                      <img
+                        src={tech.icon}
+                        alt={tech.tech}
+                        style={{ width: '1.5rem', height: '1.5rem' }}
+                      />
+                    }
+                  />
                 ))}
               </Box>
 
@@ -362,39 +352,16 @@ export const About = (): ReactElement => {
                   }}
                 >
                   {aboutData?.frontend?.map((skill, index) => (
-                    <>
-                      {inView2 && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{
-                            duration: 0.4,
-                            delay: 0.4 * index,
-                          }}
-                          onAnimationComplete={() => {
-                            if (index === aboutData.frontend.length - 1) {
-                              setChips1(true);
-                            }
-                          }}
-                        >
-                          <ListItem>
-                            <ListItemIcon>
-                              <img
-                                src={skill.icon}
-                                alt={skill.name}
-                                width={40}
-                                height={40}
-                              />
-                            </ListItemIcon>
-
-                            <ListItemText
-                              primary={skill.name}
-                              secondary={skill.description}
-                            />
-                          </ListItem>
-                        </motion.div>
-                      )}
-                    </>
+                    <StaggeredListItem
+                      delay={0.3 * index}
+                      direction="left"
+                      skill={skill}
+                      onAnimationComplete={() => {
+                        if (index === aboutData.frontend.length - 1) {
+                          setChips1(true);
+                        }
+                      }}
+                    />
                   ))}
                 </List>
 
@@ -420,46 +387,18 @@ export const About = (): ReactElement => {
                     paddingBottom: '1rem',
                   }}
                 >
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 1.5,
-                    }}
-                  >
-                    {aboutData?.otherFrontEnd?.map((skill, index) => (
-                      <>
-                        {inView2 && chips1 ? (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{
-                              duration: 0.4,
-                              delay: 0.4 * index,
-                            }}
-                            style={{ display: 'inline-block' }}
-                          >
-                            <Chip
-                              sx={{
-                                margin: '0.3rem',
-                              }}
-                              label={skill.name}
-                              onClick={() => handleClick(skill.link)}
-                            />
-                          </motion.div>
-                        ) : (
-                          <Box
-                            sx={{
-                              display: 'inline-block',
-                              height: '42px',
-                              width: '100px',
-                            }}
-                          />
-                        )}
-                      </>
-                    ))}
-                  </motion.div>
+                  {aboutData?.otherFrontEnd?.map((skill: Tech, index) => (
+                    <StaggeredChip
+                      delay={0.1 * index}
+                      key={index}
+                      label={skill.name}
+                      ready={chips1}
+                      onClick={() => handleClick(skill.link || '')}
+                      sx={{
+                        margin: '0.3rem',
+                      }}
+                    />
+                  ))}
                 </Box>
               </Box>
             </Container>
@@ -528,39 +467,16 @@ export const About = (): ReactElement => {
                   }}
                 >
                   {aboutData?.backend?.map((skill, index) => (
-                    <>
-                      {inView3 && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{
-                            duration: 0.4,
-                            delay: 0.4 * index,
-                          }}
-                          onAnimationComplete={() => {
-                            if (index === aboutData.backend.length - 1) {
-                              setChips2(true);
-                            }
-                          }}
-                        >
-                          <ListItem>
-                            <ListItemIcon>
-                              <img
-                                src={skill.icon}
-                                alt={skill.name}
-                                width={40}
-                                height={40}
-                              />
-                            </ListItemIcon>
-
-                            <ListItemText
-                              primary={skill.name}
-                              secondary={skill.description}
-                            />
-                          </ListItem>
-                        </motion.div>
-                      )}
-                    </>
+                    <StaggeredListItem
+                      delay={0.3 * index}
+                      direction="right"
+                      skill={skill}
+                      onAnimationComplete={() => {
+                        if (index === aboutData.backend.length - 1) {
+                          setChips2(true);
+                        }
+                      }}
+                    />
                   ))}
                 </List>
 
@@ -586,36 +502,17 @@ export const About = (): ReactElement => {
                     paddingBottom: '1rem',
                   }}
                 >
-                  {aboutData?.otherBackEnd?.map((skill, index) => (
-                    <>
-                      {inView3 && chips2 ? (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{
-                            duration: 0.4,
-                            delay: 0.4 * index,
-                          }}
-                          style={{ display: 'inline-block' }}
-                        >
-                          <Chip
-                            sx={{
-                              margin: '0.3rem',
-                            }}
-                            label={skill.name}
-                            onClick={() => handleClick(skill.link)}
-                          />
-                        </motion.div>
-                      ) : (
-                        <Box
-                            sx={{
-                              display: 'inline-block',
-                              height: '42px',
-                              width: '90px',
-                            }}
-                          />
-                      )}
-                    </>
+                  {aboutData?.otherBackend?.map((skill: Tech, index) => (
+                    <StaggeredChip
+                      delay={0.1 * index}
+                      key={index}
+                      label={skill.name}
+                      ready={chips2}
+                      onClick={() => handleClick(skill.link ? skill.link : '')}
+                      sx={{
+                        margin: '0.3rem',
+                      }}
+                    />
                   ))}
                 </Box>
               </Box>
@@ -630,6 +527,7 @@ export const About = (): ReactElement => {
             justifyContent: 'center',
             alignItems: 'center',
             minHeight: '100vh',
+            paddingY: '2rem',
           }}
           maxWidth={false}
         >
@@ -688,7 +586,8 @@ export const About = (): ReactElement => {
                   }}
                   gutterBottom
                 >
-                  I also happen to know a few other technologies and skills that i have picked up along the way
+                  I also happen to know a few other technologies and skills that
+                  i have picked up along the way
                 </Typography>
               </Box>
 
@@ -700,27 +599,16 @@ export const About = (): ReactElement => {
                 }}
               >
                 {aboutData?.other?.map((skill, index) => (
-                  <>
-                    {inView4 && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 0 }}
-                        animate={{ opacity: 1, y: 1 }}
-                        transition={{
-                          duration: 0.4,
-                          delay: 0.1 * index,
-                        }}
-                        style={{ display: 'inline-block' }}
-                      >
-                        <Chip
-                          sx={{
-                            margin: '0.5rem',
-                          }}
-                          label={skill.name}
-                          onClick={() => handleClick(skill.link)}
-                        />
-                      </motion.div>
-                    )}
-                  </>
+                  <StaggeredChip
+                    delay={0.1 * index}
+                    key={index}
+                    label={skill.name}
+                    ready={true}
+                    onClick={() => handleClick(skill.link ? skill.link : '')}
+                    sx={{
+                      margin: '0.3rem',
+                    }}
+                  />
                 ))}
               </Box>
             </Box>

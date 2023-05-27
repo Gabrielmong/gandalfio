@@ -7,8 +7,21 @@ import graphql from 'assets/svg/graphql.svg';
 import prisma from 'assets/svg/prisma.svg';
 import postgres from 'assets/svg/postgres.svg';
 import express from 'assets/svg/express.svg';
+import { Tech } from 'models';
 
-export const aboutData = {
+export interface AboutData {
+  title: string;
+  description: string;
+  paragraphs: string[];
+  myStack: Tech[];
+  frontend: Tech[];
+  otherFrontEnd: Tech[];
+  backend: Tech[];
+  otherBackend: Tech[];
+  other: Tech[];
+}
+
+export const aboutData: AboutData = {
   title: 'About',
   description: 'This is where I tell you about myself.',
   paragraphs: [
@@ -80,12 +93,8 @@ export const aboutData = {
       link: 'https://www.php.net/',
     },
     {
-      name: 'SpringBoot',
+      name: 'Springboot',
       link: 'https://spring.io/projects/spring-boot',
-    },
-    {
-      name: 'MUI',
-      link: 'https://mui.com/',
     },
     {
       name: 'Gatsby',
@@ -136,7 +145,7 @@ export const aboutData = {
       icon: prisma,
     },
   ],
-  otherBackEnd: [
+  otherBackend: [
     {
       name: '.NET',
       link: 'https://dotnet.microsoft.com/',
@@ -266,6 +275,6 @@ export const aboutData = {
     {
       name: 'English Proficiency',
       link: 'https://www.efset.org/cert/DHy8hf',
-    }
+    },
   ],
 };

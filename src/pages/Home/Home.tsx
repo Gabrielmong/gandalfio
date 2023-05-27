@@ -7,6 +7,8 @@ import { motion, useAnimation } from 'framer-motion';
 import { keyframes } from '@emotion/react';
 import { HomeProps } from './Home.model';
 import { useInView } from 'react-intersection-observer';
+import { StaggeredCard } from 'components';
+import { Project } from 'models/Project';
 
 export const Home = ({ currentTheme }: HomeProps): ReactElement => {
   const navigation = useNavigate();
@@ -47,10 +49,6 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
           duration: 1.2,
         },
       });
-    }
-
-    if (!inView) {
-      setAnimationDone(false);
     }
   }, [controls, inView]);
 
@@ -130,6 +128,9 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
           ref={ref}
           animate={controls}
           initial={{ opacity: 0, y: 100 }}
+          onAnimationComplete={() => {
+            setAnimationDone(true);
+          }}
         >
           <Container
             sx={{
@@ -150,36 +151,12 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
               </Typography>
             </Box>
             <Grid container spacing={2} paddingBottom={15}>
-              {homeData.projects.map((project, index) => (
+              {homeData.projects.map((project: Project, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={4} key={project.title}>
-                  {inView ? (
-                    <motion.div
-                      initial={{ opacity: 0, y: 100 }}
-                      animate={{ opacity: 1, y: 1 }}
-                      transition={{
-                        duration: 0.7,
-                        delay: animationDone ? 0 : 0.1 * index,
-                      }}
-                      style={{ height: '100%' }}
-                      onAnimationComplete={() => {
-                        if (index === homeData.projects.length - 1) {
-                          setAnimationDone(true);
-                        }
-                      }}
-                      whileHover={{
-                        scale: 1.03,
-                        transition: { duration: 0.1 },
-                      }}
-                    >
-                      <Card
-                        title={project.title}
-                        description={project.description}
-                        link={project.link}
-                      />
-                    </motion.div>
-                  ) : (
-                    <></>
-                  )}
+                  <StaggeredCard
+                    delay={0.1 * index}
+                    project={project}
+                  />
                 </Grid>
               ))}
             </Grid>

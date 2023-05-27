@@ -1,3 +1,13 @@
+import { Project } from "models/Project";
+
+export interface HomeData {
+  title: string;
+  position: string;
+  description: string;
+  segue: string;
+  projects: Project[];
+}
+
 
 export const homeData = {
   title: 'Gabriel Monge',

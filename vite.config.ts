@@ -16,6 +16,7 @@ export default defineConfig({
       data: path.resolve('src/data'),
       theme: path.resolve('src/theme'),
       context: path.resolve('src/context'),
+      models: path.resolve('src/models'),
     },
   },
 });
