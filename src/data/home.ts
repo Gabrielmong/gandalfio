@@ -1,6 +1,8 @@
+
 export const homeData = {
   title: 'Gabriel Monge',
-  description: `In this webpage, I'd like to show a little bit of what im capable of in the moment, some things of what I've done in the past, also having the source code available for anyone to see how I structure my code and how I work.`,
+  position: 'Software Engineer',
+  description: `I'm a software engineer, finishing my degree at the Fidélitas University. I'm currently working as a full stack web developer at Tiims Revolution.`,
   segue: `Anyways, this is what I'm currently capable of.`,
   projects: [
     {

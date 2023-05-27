@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { Container, Box, Typography, Grid } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Container, Box, Typography, Grid, useTheme } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
 import { homeData } from 'data';
 import { Card } from 'components/Card';
 import { motion, useAnimation } from 'framer-motion';
@@ -10,6 +10,7 @@ import { useInView } from 'react-intersection-observer';
 
 export const Home = ({ currentTheme }: HomeProps): ReactElement => {
   const navigation = useNavigate();
+  const theme = useTheme();
   const [animationDone, setAnimationDone] = useState(false);
   const [gradient, setGradient] = useState({
     from: '#FE6B8B',
@@ -80,7 +81,7 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
             }}
           >
             <Typography
-              variant="h2"
+              variant="h1"
               sx={{
                 background: `linear-gradient(90deg, ${gradient.from}, ${gradient.to}, ${gradient.from})`,
                 animation: `${movingTitle} 10s infinite linear`,
@@ -93,13 +94,27 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
             >
               {homeData.title}
             </Typography>
+            <Typography variant="h6" color={'secondary'}>
+              {homeData.position}
+            </Typography>
           </Box>
           <Box
             sx={{
               paddingBottom: '1rem',
             }}
           >
-            <Typography variant="h6">{homeData.description}</Typography>
+            <Typography variant="h6">
+              {homeData.description}{' '}
+              <Link
+                to="/about"
+                style={{
+                  textDecoration: 'none',
+                  color: theme.palette.secondary.main,
+                }}
+              >
+                Learn more about me
+              </Link>
+            </Typography>
           </Box>
           <motion.div
             initial={{ opacity: 0 }}
