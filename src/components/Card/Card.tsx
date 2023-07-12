@@ -10,10 +10,29 @@ import { Typography, Button } from '@mui/material';
 import { ReactElement } from 'react';
 import { CardProps } from './Card.model';
 import { useNavigate } from 'react-router-dom';
+import { useMemo } from 'react';
+
+const clickMeTexts: string[] = [
+  'Click me to see me',
+  'Click me to learn more',
+  'Click me to see more',
+  'Click me to maybe see a preview, probably not though',
+  "Hi, I'm a clickable card",
+  'I just put some random text here',
+  "I'm a card, I'm clickable",
+  'clickclickclick',
+  'Touch me',
+  'This one is pretty cool',
+];
 
 export const Card = ({ title, description, link }: CardProps): ReactElement => {
   const navigation = useNavigate();
   const theme = useTheme();
+
+  const [text] = useMemo(() => {
+    const randomIndex = Math.floor(Math.random() * clickMeTexts.length);
+    return [clickMeTexts[randomIndex]];
+  }, []);
 
   const handleLinkClick = (path: string) => {
     if (path.startsWith('http')) {
@@ -22,19 +41,6 @@ export const Card = ({ title, description, link }: CardProps): ReactElement => {
       navigation(path);
     }
   };
-
-  const clickMeTexts: string[] = [
-    'Click me to see me',
-    'Click me to learn more',
-    'Click me to see more',
-    'Click me to maybe see a preview, probably not though',
-    'Hi, I\'m a clickable card',
-    'I just put some random text here',
-    'I\'m a card, I\'m clickable',
-    'clickclickclick',
-    'Touch me',
-    'This one is pretty cool',
-  ];
 
   return (
     <ButtonBase
@@ -77,7 +83,7 @@ export const Card = ({ title, description, link }: CardProps): ReactElement => {
               color: theme.palette.secondary.main,
             }}
           >
-            {clickMeTexts[Math.floor(Math.random() * clickMeTexts.length)]}
+            {text}
           </Typography>
         </CardActions>
       </MUICard>

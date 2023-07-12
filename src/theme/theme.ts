@@ -37,7 +37,7 @@ const lightThemeSpec = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Segoe UI',
   },
 });
 
@@ -78,7 +78,7 @@ const darkThemeSpec = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Segoe UI',
   },
 });
 

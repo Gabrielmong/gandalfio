@@ -181,7 +181,10 @@ export const About = (): ReactElement => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 1.5 }}
             >
-              <Button variant="outlined" onClick={() => handleClick('')}>
+              <Button
+                variant="outlined"
+                onClick={() => handleClick('https://github.com/Gabrielmong')}
+              >
                 Look at my github profile
               </Button>
             </motion.div>

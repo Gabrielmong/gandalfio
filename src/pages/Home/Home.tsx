@@ -11,9 +11,7 @@ import { StaggeredCard } from 'components';
 import { Project } from 'models/Project';
 
 export const Home = ({ currentTheme }: HomeProps): ReactElement => {
-  const navigation = useNavigate();
   const theme = useTheme();
-  const [animationDone, setAnimationDone] = useState(false);
   const [gradient, setGradient] = useState({
     from: '#FE6B8B',
     to: '#FF8E53',
@@ -22,7 +20,7 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
   useEffect(() => {
     if (currentTheme === 'dark') {
       setGradient({
-        from: '#000000',
+        from: '#333333',
         to: '#dddddd',
       });
     } else {
@@ -128,9 +126,6 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
           ref={ref}
           animate={controls}
           initial={{ opacity: 0, y: 100 }}
-          onAnimationComplete={() => {
-            setAnimationDone(true);
-          }}
         >
           <Container
             sx={{
@@ -153,10 +148,7 @@ export const Home = ({ currentTheme }: HomeProps): ReactElement => {
             <Grid container spacing={2} paddingBottom={15}>
               {homeData.projects.map((project: Project, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={4} key={project.title}>
-                  <StaggeredCard
-                    delay={0.1 * index}
-                    project={project}
-                  />
+                  <StaggeredCard delay={0.1 * index} project={project} />
                 </Grid>
               ))}
             </Grid>

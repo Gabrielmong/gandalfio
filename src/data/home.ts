@@ -1,4 +1,4 @@
-import { Project } from "models/Project";
+import { Project } from 'models/Project';
 
 export interface HomeData {
   title: string;
@@ -7,7 +7,6 @@ export interface HomeData {
   segue: string;
   projects: Project[];
 }
-
 
 export const homeData = {
   title: 'Gabriel Monge',
@@ -49,6 +48,11 @@ export const homeData = {
       title: 'Tracker',
       description: `A webpage im currently working on, it's a finance tracker so I can stop using an excel sheet to keep track of my expenses.`,
       link: 'https://github.com/Gabrielmong/tracker',
+    },
+    {
+      title: 'Tracker Backend',
+      description: `Server and database for the tracker project, made with Node.js and PostgreSQL., using Express, TS and Apollo Server.`,
+      link: 'https://github.com/Gabrielmong/tracker-backend',
     },
     {
       title: 'Algo Visualizer Pyton',

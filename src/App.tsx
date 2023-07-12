@@ -35,6 +35,8 @@ function App() {
     } else {
       localStorage.setItem('theme', 'dark');
     }
+
+    return () => {};
   }, []);
 
   return (

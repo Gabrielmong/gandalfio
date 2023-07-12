@@ -147,6 +147,14 @@ export const aboutData: AboutData = {
   ],
   otherBackend: [
     {
+      name: 'Apollo Server',
+      link: 'https://www.apollographql.com/docs/apollo-server/',
+    },
+    {
+      name: 'Express',
+      link: 'https://expressjs.com/',
+    },
+    {
       name: '.NET',
       link: 'https://dotnet.microsoft.com/',
     },
@@ -210,7 +218,7 @@ export const aboutData: AboutData = {
     },
     {
       name: 'GitHub',
-      link: '',
+      link: 'https://github.com/',
     },
     {
       name: 'Linux',
