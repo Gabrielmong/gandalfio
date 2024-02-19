@@ -26,14 +26,16 @@ export const aboutData: AboutData = {
   description: 'This is where I tell you about myself.',
   paragraphs: [
     `I'm a software engineer, used to React, Node, and TypeScript. I also know
-        Python, Java, PHP, C/C++, C#, Some Dart, and of course, SQL and PL/SQL, I do both frontend
+        some Python, Java, PHP, C/C++, C#, Some Dart, and of course, SQL and PL/SQL, I do both frontend
         and backend development, but backend is kind of growing on me.`,
-    `I'm a big fan of video games, and at the time of writing this, I'm playing League of Legends, BeamNG.drive, and I
+    `I'm a big fan of video games, and at the time of writing this, I'm playing Helldivers 2, BeamNG.drive, and I
         also play lots of Besiege.`,
     `I also happen to play the guitar, I really enjoy music, there's not a time in the day 
         where I don't listen to music, I mainly listen to Metal, like Opeth, Amon Amarth, Tool, etc. but I do enjoy some cumbias from time to time.`,
-    `I work as a software engineer at a company called Tiims Revolution, we're a small company, but we're growing tho, I get to work on frontend and backend, 
+    `I work as a software engineer at a company called Tiims Revolution, we're a small company, but we're growing, I get to work on frontend and backend, 
         my coworkers are my friends so its an enjoyable time.`,
+    `I'm also the developer for Biotopika.com, a startup dedicated to dermo-cosmetics, has a working managment system, front page for information, and currently working
+        on the store and the blog.`,
   ],
   myStack: [
     {
@@ -67,12 +69,12 @@ export const aboutData: AboutData = {
     {
       name: 'React',
       description:
-        'Been using React for a year now, I have used it for both personal and work projects.',
+        'Been using React for over a year now, I have used it for both personal and work projects.',
       icon: react,
     },
     {
       name: 'TypeScript',
-      description: `I've been using TS for some time now, really like using types, it makes the development process a lot easier. and actually faster.`,
+      description: `I've been using TS for some time now, really like using types, it makes the development process a lot easier, and actually faster.`,
       icon: typescript,
     },
     {
@@ -130,7 +132,7 @@ export const aboutData: AboutData = {
     },
     {
       name: 'GraphQL',
-      description: `GraphQL has been a great tool for me, I use it for my personal projects, and I also use it for work, it's a great tool for APIs.`,
+      description: `GraphQL has been a great tool for me, I use it for my personal projects, mainly with Apollo, and I also use it for work, it's a great tool for APIs.`,
       icon: graphql,
     },
     {

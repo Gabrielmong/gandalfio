@@ -11,7 +11,7 @@ export interface HomeData {
 export const homeData = {
   title: 'Gabriel Monge',
   position: 'Software Engineer',
-  description: `I'm a software engineer, finishing my degree at the Fidélitas University. I'm currently working as a full stack web developer at Tiims Revolution.`,
+  description: `I'm a software engineer, finished my courses at the Fidélitas University and just my final communal work left. I'm currently working as a full stack web developer at Tiims Revolution.`,
   segue: `Anyways, this is what I'm currently capable of.`,
   projects: [
     {
