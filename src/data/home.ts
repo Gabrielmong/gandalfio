@@ -11,24 +11,9 @@ export interface HomeData {
 export const homeData = {
   title: 'Gabriel Monge',
   position: 'Software Engineer',
-  description: `I'm a software engineer, finished my courses at the Fidélitas University and just my final communal work left. I'm currently working as a full stack web developer at Tiims Revolution.`,
+  description: `I'm Fullstack Developer at Tiims Revolution excelling in JavaScript, TypeScript, React.js, and Node.js. Proven expertise in developing web applications from inception to deployment, optimizing processes, and enhancing software functionality. Proficient in GitHub-based collaboration and CI/CD.`,
   segue: `Anyways, this is what I'm currently capable of.`,
   projects: [
-    {
-      title: 'Tenzies',
-      description: `Roll as fast as you can to match all 10 of your dice. Made as a useState and useEffect practice.`,
-      link: 'https://github.com/Gabrielmong/tenzies',
-    },
-    {
-      title: 'Shooting Game',
-      description: `Shooting game I made on Python a while back, no pygame used.`,
-      link: 'https://github.com/Gabrielmong/dumbgame',
-    },
-    {
-      title: 'EmpanadaReview',
-      description: `A web app developed as a final project for the course 'Ambiente Web Cliente/Servidor'. Developed on React, with an Oracle database and Node.js backend.`,
-      link: 'https://github.com/Gabrielmong/main-project-front',
-    },
     {
       title: 'Gandalf.io',
       description: `Portfolio website, made with React, TypeScript and Vite.`,
@@ -38,11 +23,6 @@ export const homeData = {
       title: 'Berserker',
       description: `A videogame developed on Unity and C# as final project for the course 'Estructura y Arquitectura de Videojuegos', learning the basics of Unity and how game development works.`,
       link: 'https://github.com/Gabrielmong/berserker',
-    },
-    {
-      title: 'Code Playground',
-      description: `Stupid little scripts i do to practice, contains Python and JavaScript scripts mainly, but also some C/C++, Java, Markdown, Powershell and shell scripts. `,
-      link: 'https://github.com/Gabrielmong/Code-Playground',
     },
     {
       title: 'Tracker',
@@ -68,6 +48,16 @@ export const homeData = {
       title: 'The Crops Chronicles',
       description: `This is a game made in Unity and C#, it's a 3d "farming" game, that actually has fighting mechanics for some reason, assigned as a final project for "Diseño de Videojuegos" course.`,
       link: 'https://github.com/Gabrielmong/diseno-videojuegos-g2',
+    },
+    {
+      title: 'Biotopika',
+      description: `A website I'm currently working on, it's a store for dermo-cosmetics, made with React, TypeScript, Node.js, PostgreSQL, and Express.`,
+      link: 'https://github.com/Biotopika',
+    },
+    {
+      title: 'Hogar Infantil Brotes de Olivo',
+      description: `A webpage I made for a children's home, as part of a social service project, made with React, TypeScript, Node.js, PostgreSQL, and Express.`,
+      link: 'https://github.com/Brotes-de-Olivo',
     },
   ],
 };

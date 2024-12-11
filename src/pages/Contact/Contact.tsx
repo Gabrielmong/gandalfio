@@ -11,28 +11,16 @@ export const Contact = (): ReactElement => {
     window.open(path, '_blank');
   };
 
-  const handleDownloadClick = (resume: string) => {
-    if (resume === 'pretty') {
-      fetch('PrettyResume.pdf').then((response) => {
-        response.blob().then((blob) => {
-          const url = window.URL.createObjectURL(new Blob([blob]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = 'PrettyResume.pdf';
-          link.click();
-        });
+  const handleDownloadClick = () => {
+    fetch('GabrielsResume.pdf').then((response) => {
+      response.blob().then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'GabrielsResume.pdf';
+        link.click();
       });
-    } else {
-      fetch('BoringResume.pdf').then((response) => {
-        response.blob().then((blob) => {
-          const url = window.URL.createObjectURL(new Blob([blob]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = 'BoringResume.pdf';
-          link.click();
-        });
-      });
-    }
+    });
   };
 
   return (
@@ -121,28 +109,18 @@ export const Contact = (): ReactElement => {
               }}
             >
               <Typography variant="h6">
-                If you want to look at my Resume, go ahead
+                Or you can download my resume here:
               </Typography>
               <Button
                 variant="outlined"
-                onClick={() => handleDownloadClick('pretty')}
+                onClick={handleDownloadClick}
                 sx={{
                   marginTop: '1rem',
                   color: 'inherit',
                   marginRight: '1rem',
                 }}
               >
-                Download Pretty Resume
-              </Button>
-              <Button
-                variant="outlined"
-                onClick={() => handleDownloadClick('boring')}
-                sx={{
-                  marginTop: '1rem',
-                  color: 'inherit',
-                }}
-              >
-                Download Boring Resume
+                Download Resume
               </Button>
             </Box>
           </motion.div>
