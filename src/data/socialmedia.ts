@@ -18,11 +18,6 @@ export const socialMediaData = [
     image: linkedin,
   },
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/notgabriel_mong',
-    image: twitter,
-  },
-  {
     name: 'Email',
     url: 'mailto:gabriel.monge.lizano@gmail.com',
     image: gmail,

@@ -286,5 +286,9 @@ export const aboutData: AboutData = {
       name: 'English Proficiency',
       link: 'https://www.efset.org/cert/DHy8hf',
     },
+    {
+      name: 'XState',
+      link: 'https://xstate.js.org/docs/',
+    },
   ],
 };

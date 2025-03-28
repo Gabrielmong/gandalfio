@@ -1,4 +1,7 @@
 import { socialMediaData } from './socialmedia';
+import linkedin from 'assets/images/LinkedIn.png';
+import whatsapp from 'assets/images/WhatsApp.png';
+import gmail from 'assets/images/Gmail.png';
 
 export const contactData = {
   title: 'Contact',
@@ -7,17 +10,17 @@ export const contactData = {
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/gabrielmonge/',
-      image: socialMediaData[1].image,
+      image: linkedin,
     },
     {
       name: 'Email',
       url: 'mailto:gabriel.monge.lizano@gmail.com',
-      image: socialMediaData[3].image,
+      image: gmail,
     },
     {
       name: 'WhatsApp',
       url: 'https://wa.me/50686837078',
-      image: socialMediaData[6].image,
+      image: whatsapp,
     },
   ],
 };

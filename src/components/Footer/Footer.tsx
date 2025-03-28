@@ -1,12 +1,4 @@
-import {
-  Container,
-  IconButton,
-  Button,
-  Box,
-  Typography,
-  Grid,
-  keyframes,
-} from '@mui/material';
+import { Container, Box, Typography, Grid, keyframes } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { ReactElement, useEffect, useState } from 'react';
 import { socialMediaData } from 'data';
@@ -34,7 +26,6 @@ export const Footer = ({ currentTheme }: FooterProps): ReactElement => {
         from: '#444444',
         to: '#ffffff',
       });
-
     } else {
       setGradient({
         from: '#0f1c2b',
@@ -79,14 +70,16 @@ export const Footer = ({ currentTheme }: FooterProps): ReactElement => {
               color: 'white',
               textDecoration: 'none',
               background: `linear-gradient(90deg, ${otherGradient.from}, ${otherGradient.to}, ${otherGradient.from})`,
-                animation: `${movingTitle} 10s infinite linear`,
-                animationFillMode: 'forwards',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                lineHeight: '1.5',
+              animation: `${movingTitle} 10s infinite linear`,
+              animationFillMode: 'forwards',
+              backgroundSize: '400% 400%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              lineHeight: '1.5',
             }}
-          >Gabriel Monge</Typography>
+          >
+            Gabriel Monge
+          </Typography>
         </Link>
       </Typography>
       <Box
