@@ -29,11 +29,10 @@ export const aboutData: AboutData = {
         some Python, Java, PHP, C/C++, C#, Some Dart, and of course, SQL and PL/SQL, I do both frontend
         and backend development, but backend is kind of growing on me.`,
     `I'm a big fan of video games, and at the time of writing this, I'm playing Rainbow Six Siege, BeamNG.drive, and I
-        also play lots of Baldur's Gate 3.`,
+        also play lots of Roadcraft`,
     `I also happen to play the guitar, I really enjoy music, there's not a time in the day 
         where I don't listen to music, I mainly listen to Metal, like Opeth, Amon Amarth, Tool, etc. but I do enjoy some cumbias from time to time.`,
-    `I work as a software engineer at a company called Tiims Revolution, we're a small company, but we're growing, I get to work on frontend and backend, 
-        my coworkers are my friends so its an enjoyable time.`,
+    `I work as a software engineer at Track Star, a fleet management company through GPS tracking, teleatics and enterprise assets management.`,
     `I'm also the developer for Biotopika.com, a startup dedicated to dermo-cosmetics, has a working managment system, front page for information, and currently working
         on the store and the blog.`,
   ],

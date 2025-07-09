@@ -11,7 +11,7 @@ export interface HomeData {
 export const homeData = {
   title: 'Gabriel Monge',
   position: 'Software Engineer',
-  description: `I'm Fullstack Developer at Tiims Revolution excelling in JavaScript, TypeScript, React.js, and Node.js. Proven expertise in developing web applications from inception to deployment, optimizing processes, and enhancing software functionality. Proficient in GitHub-based collaboration and CI/CD.`,
+  description: `I'm a Fullstack Developer @ Track Star excelling in JavaScript, TypeScript, React.js, and Node.js. I hold a bachelor's degree in Computer Systems Engineering. Proven expertise in developing web applications from inception to deployment, optimizing processes, and enhancing software functionality. Proficient in GitHub-based collaboration and CI/CD.`,
   segue: `Anyways, this is what I'm currently capable of.`,
   projects: [
     {
