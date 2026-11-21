@@ -1,5 +1,7 @@
 import { ReactElement } from 'react';
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router';
+import DescriptionOutlined from '@mui/icons-material/DescriptionOutlined';
 import FileDownloadOutlined from '@mui/icons-material/FileDownloadOutlined';
 import { contactData, cvHref } from 'data';
 import { Reveal, SocialLinks } from 'components';
@@ -26,16 +28,31 @@ export const Contact = (): ReactElement => (
       <Box sx={{ mt: 5 }}>
         <SocialLinks variant="buttons" />
       </Box>
-      <Button
-        variant="contained"
-        size="large"
-        href={cvHref}
-        download
-        startIcon={<FileDownloadOutlined />}
-        sx={{ mt: 5 }}
+      <Stack
+        direction="row"
+        useFlexGap
+        spacing={1.5}
+        sx={{ mt: 5, flexWrap: 'wrap' }}
       >
-        Download CV
-      </Button>
+        <Button
+          variant="contained"
+          size="large"
+          component={RouterLink}
+          to="/resume"
+          startIcon={<DescriptionOutlined />}
+        >
+          View CV
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          href={cvHref}
+          download
+          startIcon={<FileDownloadOutlined />}
+        >
+          Download CV
+        </Button>
+      </Stack>
     </Reveal>
   </Container>
 );

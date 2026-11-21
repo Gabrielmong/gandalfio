@@ -1,7 +1,7 @@
 {
   "name": "gandalfio",
   "private": true,
-  "version": "3.0.0",
+  "version": "4.0.1",
   "type": "module",
   "scripts": {
     "start": "vite",
@@ -21,6 +21,7 @@
     "react": "^19",
     "react-dom": "^19",
     "react-intersection-observer": "^11",
+    "react-pdf": "^11.1.0",
     "react-router": "^8"
   },
   "devDependencies": {

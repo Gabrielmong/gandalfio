@@ -19,3 +19,11 @@ it('links all four socials', () => {
       screen.getByRole('link', { name: new RegExp(n, 'i') })
     ).toBeInTheDocument();
 });
+
+it('links to the in-page CV viewer', () => {
+  renderWithProviders(<Contact />);
+  expect(screen.getByRole('link', { name: /view cv/i })).toHaveAttribute(
+    'href',
+    '/resume'
+  );
+});

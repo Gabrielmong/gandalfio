@@ -5,14 +5,11 @@ import { Topbar } from 'components/Topbar';
 import { Footer } from 'components/Footer';
 import { AppRoutes } from 'components/AppRoutes';
 
-it('links the CV under the base path', () => {
+it('sends the CV button to the resume page', () => {
   renderWithProviders(<Topbar mode="dark" onToggleTheme={() => {}} />);
-  const cv = screen.getAllByRole('link', { name: /cv/i })[0];
-  expect(cv).toHaveAttribute(
-    'href',
-    `${import.meta.env.BASE_URL}GabrielsResume.pdf`
-  );
-  expect(cv).toHaveAttribute('download');
+  const cv = screen.getByRole('link', { name: /cv/i });
+  expect(cv).toHaveAttribute('href', '/resume');
+  expect(cv).not.toHaveAttribute('download');
 });
 
 it('shows the nav links inline on desktop', () => {

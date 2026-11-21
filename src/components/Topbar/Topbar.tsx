@@ -19,8 +19,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import LightModeOutlined from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlined from '@mui/icons-material/DarkModeOutlined';
-import FileDownloadOutlined from '@mui/icons-material/FileDownloadOutlined';
-import { cvHref } from 'data';
+import DescriptionOutlined from '@mui/icons-material/DescriptionOutlined';
 import { ThemeMode } from 'theme';
 
 interface TopbarProps {
@@ -98,9 +97,10 @@ export const Topbar = ({ mode, onToggleTheme }: TopbarProps): ReactElement => {
                     <Button
                       fullWidth
                       variant="outlined"
-                      href={cvHref}
-                      download
-                      startIcon={<FileDownloadOutlined />}
+                      component={NavLink}
+                      to="/resume"
+                      onClick={() => setOpen(false)}
+                      startIcon={<DescriptionOutlined />}
                     >
                       CV
                     </Button>
@@ -132,9 +132,9 @@ export const Topbar = ({ mode, onToggleTheme }: TopbarProps): ReactElement => {
               <Button
                 variant="outlined"
                 size="small"
-                href={cvHref}
-                download
-                startIcon={<FileDownloadOutlined />}
+                component={NavLink}
+                to="/resume"
+                startIcon={<DescriptionOutlined />}
                 sx={{ ml: 1, color: 'text.primary', borderColor: 'divider' }}
               >
                 CV
