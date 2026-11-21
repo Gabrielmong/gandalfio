@@ -1,4 +1,4 @@
 export { homeData } from './home';
-export { socialMediaData } from './socialmedia';
+export { socials } from './socialmedia';
 export { aboutData } from './about';
-export { contactData } from './contact';
+export { contactData, cvHref } from './contact';

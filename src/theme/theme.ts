@@ -1,108 +1,106 @@
-import { createTheme, responsiveFontSizes } from '@mui/material';
+import {
+  createTheme,
+  responsiveFontSizes,
+  Theme,
+  ThemeOptions,
+} from '@mui/material/styles';
 
-const lightThemeSpec = createTheme({
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          scrollbarColor: 'secondary',
-          '&::-webkit-scrollbar': {
-            width: '0.5rem',
-            height: '0.5rem',
+const fontFamily = [
+  '"Segoe UI"',
+  'system-ui',
+  '-apple-system',
+  'Roboto',
+  '"Helvetica Neue"',
+  'Arial',
+  'sans-serif',
+].join(',');
+
+interface Tokens {
+  mode: 'dark' | 'light';
+  bg: string;
+  paper: string;
+  border: string;
+  text: string;
+  muted: string;
+  primary: string;
+  scrollThumb: string;
+}
+
+const dark: Tokens = {
+  mode: 'dark',
+  bg: '#0f1c2b',
+  paper: '#16283d',
+  border: '#22395a',
+  text: '#e8eef5',
+  muted: '#9fb6d3',
+  primary: '#5b8fd6',
+  scrollThumb: '#314463',
+};
+
+const light: Tokens = {
+  mode: 'light',
+  bg: '#ededed',
+  paper: '#ffffff',
+  border: '#d5dbe3',
+  text: '#0f1c2b',
+  muted: '#4a5d75',
+  primary: '#0f1c2b',
+  scrollThumb: '#9aa8b8',
+};
+
+const build = (t: Tokens): Theme => {
+  const options: ThemeOptions = {
+    palette: {
+      mode: t.mode,
+      primary: { main: t.primary },
+      secondary: { main: t.muted },
+      background: { default: t.bg, paper: t.paper },
+      text: { primary: t.text, secondary: t.muted },
+      divider: t.border,
+    },
+    shape: { borderRadius: 12 },
+    typography: {
+      fontFamily,
+      h1: { fontWeight: 700, letterSpacing: '-0.01em' },
+      h2: { fontWeight: 700, letterSpacing: '-0.01em' },
+      h3: { fontWeight: 600 },
+      overline: { letterSpacing: '0.14em', fontWeight: 600 },
+      button: { textTransform: 'none', fontWeight: 600 },
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          html: { scrollBehavior: 'smooth' },
+          body: {
+            scrollbarColor: `${t.scrollThumb} ${t.bg}`,
+            transition: 'background-color 0.3s ease',
           },
-          '&::-webkit-scrollbar-track': {
-            background: '#0f1c2b',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: '#314463',
-            '&:hover': {
-              background: '#345282',
-            },
+          '@media (prefers-reduced-motion: reduce)': {
+            html: { scrollBehavior: 'auto' },
           },
         },
       },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        h1: {
-          fontSize: '3.5rem',
-        },
-        h2: {
-          fontSize: '3rem',
-        },
-        h3: {
-          fontSize: '2.5rem',
-        },
-        h4: {
-          fontSize: '2rem',
-        },
-        h5: {
-          fontSize: '1.5rem',
-        },
-        h6: {
-          fontSize: '1.25rem',
-        },
+      MuiPaper: { styleOverrides: { root: { backgroundImage: 'none' } } },
+      MuiCard: {
+        defaultProps: { elevation: 0 },
+        styleOverrides: { root: { border: `1px solid ${t.border}` } },
       },
-    },
-  },
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#0f1c2b',
-    },
-    secondary: {
-      main: '#123d61',
-    },
-    background: {
-      default: '#ededed',
-      paper: '#fff',
-    },
-  },
-  typography: {
-    fontFamily: 'Segoe UI',
-  },
-});
-
-const darkThemeSpec = createTheme({
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          scrollbarColor: 'primary',
-          '&::-webkit-scrollbar': {
-            width: '0.5rem',
-            height: '0.5rem',
-          },
-          '&::-webkit-scrollbar-track': {
-            background: '#323232',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: '#474747',
-            '&:hover': {
-              background: '#666666',
-            },
+      MuiChip: { styleOverrides: { root: { borderRadius: 6 } } },
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            backgroundColor: `${t.bg}e6`,
+            backdropFilter: 'blur(8px)',
+            borderBottom: `1px solid ${t.border}`,
+            color: t.text,
           },
         },
       },
+      MuiLink: { defaultProps: { underline: 'hover' } },
     },
-  },
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#dddddd',
-    },
-    secondary: {
-      main: '#474747',
-    },
-    background: {
-      default: '#121212',
-      paper: '#1e1e1e',
-    },
-  },
-  typography: {
-    fontFamily: 'Segoe UI',
-  },
-});
+  };
+  return responsiveFontSizes(createTheme(options));
+};
 
-export const lightTheme = responsiveFontSizes(lightThemeSpec);
-export const darkTheme = responsiveFontSizes(darkThemeSpec);
+export const darkTheme = build(dark);
+export const lightTheme = build(light);

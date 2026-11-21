@@ -1,160 +1,86 @@
-import { ReactElement, useEffect, useState } from 'react';
-import { Container, Box, Typography, Grid, useTheme } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { ReactElement } from 'react';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { homeData } from 'data';
-import { Card } from 'components/Card';
-import { motion, useAnimation } from 'framer-motion';
-import { keyframes } from '@emotion/react';
-import { HomeProps } from './Home.model';
-import { useInView } from 'react-intersection-observer';
-import { StaggeredCard } from 'components';
-import { Project } from 'models/Project';
+import { ArchiveList, ProjectCard, Reveal, SocialLinks } from 'components';
 
-export const Home = ({ currentTheme }: HomeProps): ReactElement => {
-  const theme = useTheme();
-  const [gradient, setGradient] = useState({
-    from: '#FE6B8B',
-    to: '#FF8E53',
-  });
+const SectionLabel = ({ children }: { children: string }) => (
+  <Typography
+    variant="overline"
+    component="h2"
+    color="text.secondary"
+    sx={{ display: 'block', mb: 2 }}
+  >
+    {children}
+  </Typography>
+);
 
-  useEffect(() => {
-    if (currentTheme === 'dark') {
-      setGradient({
-        from: '#333333',
-        to: '#dddddd',
-      });
-    } else {
-      setGradient({
-        from: '#0f1c2b',
-        to: '#55a0e0',
-      });
-    }
-  }, [currentTheme]);
+/** First card is wide; so is a last card that would otherwise sit alone in its row. */
+const isWide = (i: number, n: number) =>
+  i === 0 || (i === n - 1 && (n - 1) % 2 === 1);
 
-  const movingTitle = keyframes`
-    to { background-position: 270% center; }
-  `;
-
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start({
-        opacity: 1,
-        y: 1,
-        transition: {
-          duration: 1.2,
-        },
-      });
-    }
-  }, [controls, inView]);
+export const Home = (): ReactElement => {
+  const featured = homeData.projects.filter((p) => p.featured);
+  const archive = homeData.projects.filter((p) => !p.featured);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.7 }}
-    >
-      <Container
-        sx={{
-          boxShadow: '0px -15px 20px 10px rgba(0,0,0,0.2)',
-        }}
-        maxWidth="xl"
+    <Container maxWidth="lg">
+      <Box
+        component="section"
+        sx={{ pt: { xs: 8, md: 14 }, pb: { xs: 8, md: 12 } }}
       >
-        <Container
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            minHeight: 'calc(100vh - 64px)',
-          }}
-        >
-          <Box
-            sx={{
-              paddingBottom: '2rem',
-            }}
+        <Reveal>
+          <Typography
+            variant="h1"
+            sx={{ fontSize: { xs: '2.75rem', md: '4rem' } }}
           >
-            <Typography
-              variant="h1"
-              sx={{
-                background: `linear-gradient(90deg, ${gradient.from}, ${gradient.to}, ${gradient.from})`,
-                animation: `${movingTitle} 10s infinite linear`,
-                animationFillMode: 'forwards',
-                backgroundSize: '400% 400%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                lineHeight: '1.5',
-              }}
-            >
-              {homeData.title}
-            </Typography>
-            <Typography variant="h6" color={'secondary'}>
-              {homeData.position}
-            </Typography>
+            {homeData.name}
+          </Typography>
+          <Typography
+            variant="h6"
+            component="p"
+            color="text.secondary"
+            sx={{ mt: 1, fontWeight: 400 }}
+          >
+            {homeData.role} · {homeData.location}
+          </Typography>
+          <Typography
+            sx={{ mt: 3, maxWidth: 620, fontSize: '1.125rem', lineHeight: 1.7 }}
+          >
+            {homeData.intro}
+          </Typography>
+          <Box sx={{ mt: 3 }}>
+            <SocialLinks variant="chips" />
           </Box>
-          <Box
-            sx={{
-              paddingBottom: '1rem',
-            }}
-          >
-            <Typography variant="h6">
-              {homeData.description}{' '}
-              <Link
-                to="/about"
-                style={{
-                  textDecoration: 'none',
-                  color: theme.palette.secondary.main,
-                }}
+        </Reveal>
+      </Box>
+
+      <Box component="section" sx={{ pb: 10 }}>
+        <SectionLabel>Featured projects</SectionLabel>
+        <Grid container spacing={3}>
+          {featured.map((project, i) => (
+            <Grid
+              key={project.title}
+              size={{ xs: 12, md: isWide(i, featured.length) ? 12 : 6 }}
+            >
+              <Reveal
+                delay={isWide(i, featured.length) ? 0 : 0.08 * ((i - 1) % 2)}
               >
-                Learn more about me
-              </Link>
-            </Typography>
-          </Box>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-          >
-            <Box>
-              <Typography variant="h6">{homeData.segue}</Typography>
-            </Box>
-          </motion.div>
-        </Container>
-        <motion.div
-          ref={ref}
-          animate={controls}
-          initial={{ opacity: 0, y: 100 }}
-        >
-          <Container
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              minHeight: '100vh',
-            }}
-          >
-            <Box
-              sx={{
-                paddingBottom: '1rem',
-              }}
-            >
-              <Typography variant="h3" gutterBottom>
-                Projects
-              </Typography>
-            </Box>
-            <Grid container spacing={2} paddingBottom={15}>
-              {homeData.projects.map((project: Project, index) => (
-                <Grid item xs={12} sm={6} md={4} lg={4} key={project.title}>
-                  <StaggeredCard delay={0.1 * index} project={project} />
-                </Grid>
-              ))}
+                <ProjectCard
+                  project={project}
+                  wide={isWide(i, featured.length)}
+                />
+              </Reveal>
             </Grid>
-          </Container>
-        </motion.div>
-      </Container>
-    </motion.div>
+          ))}
+        </Grid>
+      </Box>
+
+      <Box component="section" sx={{ pb: 6 }}>
+        <SectionLabel>Earlier work</SectionLabel>
+        <Reveal>
+          <ArchiveList projects={archive} />
+        </Reveal>
+      </Box>
+    </Container>
   );
 };

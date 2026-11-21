@@ -1,623 +1,135 @@
+import { ReactElement, ReactNode } from 'react';
 import {
-  Container,
-  Button,
   Box,
-  Typography,
-  List,
-  ListItem,
-  ListItemIcon,
-  Icon,
-  ListItemText,
+  Card,
   Chip,
-  Divider,
-  Avatar,
+  Container,
+  Grid,
+  Stack,
+  Typography,
 } from '@mui/material';
-import { ReactElement, useEffect, useState } from 'react';
-import { aboutData } from 'data/about';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { StaggeredChip, StaggeredListItem } from 'components';
+import { aboutData } from 'data';
+import { Reveal } from 'components';
 import { Tech } from 'models';
+import { externalLinkProps } from 'components/ProjectCard/ProjectCard';
 
-export const About = (): ReactElement => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [chips1, setChips1] = useState(false);
-  const [chips2, setChips2] = useState(false);
+const SectionLabel = ({ children }: { children: ReactNode }) => (
+  <Typography
+    variant="overline"
+    component="h2"
+    color="text.secondary"
+    sx={{ display: 'block', mb: 2 }}
+  >
+    {children}
+  </Typography>
+);
 
-  const handleClick = (link: string) => {
-    window.open(link, '_blank');
-  };
+const Paragraphs = ({ items }: { items: string[] }) => (
+  <Stack spacing={2} sx={{ maxWidth: 680 }}>
+    {items.map((p) => (
+      <Typography key={p} sx={{ fontSize: '1.0625rem', lineHeight: 1.75 }}>
+        {p}
+      </Typography>
+    ))}
+  </Stack>
+);
 
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
-
-  const controls2 = useAnimation();
-  const [ref2, inView2] = useInView();
-
-  const controls3 = useAnimation();
-  const [ref3, inView3] = useInView();
-
-  const controls4 = useAnimation();
-  const [ref4, inView4] = useInView();
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 600) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (inView) {
-      controls.start({
-        opacity: 1,
-        y: 1,
-        transition: {
-          duration: 1.2,
-        },
-      });
-    }
-  }, [controls, inView]);
-
-  useEffect(() => {
-    if (inView2) {
-      controls2.start({
-        opacity: 1,
-        x: 1,
-        transition: {
-          duration: 1.2,
-        },
-      });
-    }
-
-    if (!inView2) {
-      setChips1(false);
-    }
-  }, [controls2, inView2]);
-
-  useEffect(() => {
-    if (inView3) {
-      controls3.start({
-        opacity: 1,
-        x: 1,
-        transition: {
-          duration: 1.2,
-        },
-      });
-    }
-
-    if (!inView3) {
-      setChips2(false);
-    }
-  }, [controls3, inView3]);
-
-  useEffect(() => {
-    if (inView4) {
-      controls4.start({
-        opacity: 1,
-        x: 1,
-        transition: {
-          duration: 1.2,
-        },
-      });
-    }
-  }, [controls4, inView4]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.7 }}
-      style={{
-        overflowX: 'hidden',
-      }}
-    >
-      <Container
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          minHeight: '100vh',
-          paddingTop: '2rem',
-          boxShadow: '0px -15px 20px 10px rgba(0,0,0,0.2)',
-        }}
-        maxWidth="xl"
+const TechRow = ({ tech }: { tech: Tech }) => (
+  <Box
+    component="a"
+    href={tech.link}
+    {...externalLinkProps}
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 1.25,
+      py: 0.75,
+      color: 'text.primary',
+      textDecoration: 'none',
+      '&:hover': { color: 'primary.main' },
+    }}
+  >
+    {tech.icon ? (
+      <Box
+        component="img"
+        src={tech.icon}
+        alt=""
+        sx={{ width: 20, height: 20 }}
+      />
+    ) : (
+      <Box
+        sx={{ width: 20, height: 20, display: 'grid', placeItems: 'center' }}
       >
-        <Container
+        <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            minHeight: 'calc(100vh - 64px)',
+            width: 6,
+            height: 6,
+            borderRadius: '50%',
+            bgcolor: 'primary.main',
           }}
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <Box
-              sx={{
-                paddingBottom: '2rem',
-              }}
-            >
-              <Typography variant="h2">{aboutData.title}</Typography>
-              <Typography variant="h6">{aboutData.description}</Typography>
-            </Box>
-          </motion.div>
+        />
+      </Box>
+    )}
+    <Typography variant="body2">{tech.name}</Typography>
+  </Box>
+);
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 3, delay: 0.7, type: 'spring' }}
-          >
-            {aboutData.paragraphs.map((paragraph, index) => (
-              <Box
-                sx={{
-                  paddingBottom: '1rem',
-                }}
-                key={index}
-              >
-                <Typography variant="h6">{paragraph}</Typography>
-              </Box>
-            ))}
-          </motion.div>
+export const About = (): ReactElement => (
+  <Container maxWidth="lg" sx={{ pt: { xs: 8, md: 12 }, pb: 8 }}>
+    <Reveal>
+      <Typography
+        variant="h1"
+        sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' }, mb: 3 }}
+      >
+        {aboutData.title}
+      </Typography>
+      <Paragraphs items={aboutData.bio} />
+    </Reveal>
 
-          <Box
-            sx={{
-              paddingBottom: '1rem',
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 1.5 }}
-            >
-              <Button
-                variant="outlined"
-                onClick={() => handleClick('https://github.com/Gabrielmong')}
-              >
-                Look at my github profile
-              </Button>
-            </motion.div>
-          </Box>
-        </Container>
-
-        <Container
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '100vh',
-          }}
-        >
-          <motion.div
-            ref={ref}
-            animate={controls}
-            initial={{ opacity: 0, y: 100 }}
-            style={{ width: '100%' }}
-          >
-            <Box
-              sx={{
-                paddingBottom: '1rem',
-              }}
-            >
-              <Typography
-                variant="h2"
-                sx={{
-                  textAlign: 'center',
-                }}
-                gutterBottom
-              >
-                So, what do I actually know?
-              </Typography>
-
-              <Typography
-                variant="h6"
-                sx={{
-                  textAlign: 'center',
-                }}
-              >
-                My preferred tech stack is based on the following technologies:
-              </Typography>
-
-              <Box
-                sx={{
-                  display: 'block',
-                  textAlign: 'center',
-                  paddingTop: '1rem',
-                }}
-              >
-                {aboutData?.myStack?.map((tech: Tech, index) => (
-                  <StaggeredChip
-                    delay={0.3 * index}
-                    key={index}
-                    label={tech.tech}
-                    ready={true}
-                    onClick={() => handleClick(tech.link || '')}
-                    sx={{
-                      margin: '0.3rem',
-                    }}
-                    avatar={
-                      <img
-                        src={tech.icon}
-                        alt={tech.tech}
-                        style={{ width: '1.5rem', height: '1.5rem' }}
-                      />
-                    }
-                  />
+    <Box component="section" sx={{ mt: 10 }}>
+      <SectionLabel>What I work with</SectionLabel>
+      <Grid container spacing={3}>
+        {aboutData.stack.map((g, i) => (
+          <Grid key={g.group} size={{ xs: 12, sm: 6, md: 3 }}>
+            <Reveal delay={0.06 * i}>
+              <Card sx={{ p: 2.5, height: '100%' }}>
+                <Typography variant="h6" component="h3" sx={{ mb: 1 }}>
+                  {g.group}
+                </Typography>
+                {g.items.map((t) => (
+                  <TechRow key={t.name} tech={t} />
                 ))}
-              </Box>
+              </Card>
+            </Reveal>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
 
-              <Divider
-                sx={{
-                  margin: '1rem',
-                }}
-              />
+    <Box component="section" sx={{ mt: 6 }}>
+      <SectionLabel>Also used</SectionLabel>
+      <Reveal>
+        <Stack direction="row" useFlexGap spacing={1} sx={{ flexWrap: 'wrap' }}>
+          {aboutData.tools.map((t) => (
+            <Chip
+              key={t.name}
+              label={t.name}
+              component="a"
+              href={t.link}
+              clickable
+              variant="outlined"
+              {...externalLinkProps}
+            />
+          ))}
+        </Stack>
+      </Reveal>
+    </Box>
 
-              <Box
-                sx={{
-                  paddingTop: '1rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  sx={{
-                    textAlign: 'center',
-                  }}
-                  gutterBottom
-                >
-                  Why do i use these technologies?
-                </Typography>
-
-                <Typography
-                  variant="body1"
-                  sx={{
-                    textAlign: 'center',
-                    maxWidth: '800px',
-                  }}
-                >
-                  I really like to use these technologies because they are fast,
-                  easy to use and have a great community behind them. I also
-                  like to use them because they are modern and are used by many
-                  companies.
-                </Typography>
-              </Box>
-            </Box>
-          </motion.div>
-        </Container>
-
-        <Container
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '100vh',
-          }}
-          maxWidth={false}
-        >
-          <motion.div
-            ref={ref2}
-            animate={controls2}
-            initial={{ opacity: 0, x: -100 }}
-            style={{ width: '100%' }}
-          >
-            <Container
-              sx={{
-                display: 'flex',
-                flexDirection: isMobile ? 'column' : 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-              }}
-            >
-              <Box
-                sx={{
-                  paddingRight: isMobile ? '0rem' : '2rem',
-                  paddingBottom: '1rem',
-                  height: '100%',
-                  width: isMobile ? '100%' : '50%',
-                }}
-              >
-                <Typography variant="h2">Frontend</Typography>
-              </Box>
-
-              <Box
-                sx={{
-                  justifyContent: 'center',
-                  alignItems: 'flex-start',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                  width: isMobile ? '100%' : '50%',
-                }}
-              >
-                <List
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'flex-start',
-                  }}
-                >
-                  {aboutData?.frontend?.map((skill, index) => (
-                    <StaggeredListItem
-                      delay={0.3 * index}
-                      direction="left"
-                      skill={skill}
-                      onAnimationComplete={() => {
-                        if (index === aboutData.frontend.length - 1) {
-                          setChips1(true);
-                        }
-                      }}
-                    />
-                  ))}
-                </List>
-
-                <Divider
-                  variant="middle"
-                  sx={{
-                    width: '100%',
-                  }}
-                >
-                  <Typography
-                    variant="body1"
-                    gutterBottom
-                    sx={{
-                      color: 'text.secondary',
-                    }}
-                  >
-                    Other technologies i know
-                  </Typography>
-                </Divider>
-
-                <Box
-                  sx={{
-                    paddingBottom: '1rem',
-                  }}
-                >
-                  {aboutData?.otherFrontEnd?.map((skill: Tech, index) => (
-                    <StaggeredChip
-                      delay={0.1 * index}
-                      key={index}
-                      label={skill.name}
-                      ready={chips1}
-                      onClick={() => handleClick(skill.link || '')}
-                      sx={{
-                        margin: '0.3rem',
-                      }}
-                    />
-                  ))}
-                </Box>
-              </Box>
-            </Container>
-          </motion.div>
-        </Container>
-
-        <Container
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '100vh',
-          }}
-          maxWidth={false}
-        >
-          <motion.div
-            ref={ref3}
-            animate={controls3}
-            initial={{ opacity: 0, x: 100 }}
-            style={{ width: '100%' }}
-          >
-            <Container
-              sx={{
-                display: 'flex',
-                flexDirection: isMobile ? 'column' : 'row-reverse',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-              }}
-            >
-              <Box
-                sx={{
-                  paddingRight: isMobile ? '0rem' : '2rem',
-                  paddingBottom: '1rem',
-                  height: '100%',
-                  width: isMobile ? '100%' : '50%',
-                }}
-              >
-                <Typography
-                  variant="h2"
-                  sx={{
-                    textAlign: isMobile ? 'center' : 'right',
-                  }}
-                >
-                  Backend
-                </Typography>
-              </Box>
-
-              <Box
-                sx={{
-                  justifyContent: 'center',
-                  alignItems: 'flex-start',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                  width: isMobile ? '100%' : '50%',
-                }}
-              >
-                <List
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'flex-start',
-                  }}
-                >
-                  {aboutData?.backend?.map((skill, index) => (
-                    <StaggeredListItem
-                      delay={0.3 * index}
-                      direction="right"
-                      skill={skill}
-                      onAnimationComplete={() => {
-                        if (index === aboutData.backend.length - 1) {
-                          setChips2(true);
-                        }
-                      }}
-                    />
-                  ))}
-                </List>
-
-                <Divider
-                  variant="middle"
-                  sx={{
-                    width: '100%',
-                  }}
-                >
-                  <Typography
-                    variant="body1"
-                    gutterBottom
-                    sx={{
-                      color: 'text.secondary',
-                    }}
-                  >
-                    Other technologies i know
-                  </Typography>
-                </Divider>
-
-                <Box
-                  sx={{
-                    paddingBottom: '1rem',
-                  }}
-                >
-                  {aboutData?.otherBackend?.map((skill: Tech, index) => (
-                    <StaggeredChip
-                      delay={0.1 * index}
-                      key={index}
-                      label={skill.name}
-                      ready={chips2}
-                      onClick={() => handleClick(skill.link ? skill.link : '')}
-                      sx={{
-                        margin: '0.3rem',
-                      }}
-                    />
-                  ))}
-                </Box>
-              </Box>
-            </Container>
-          </motion.div>
-        </Container>
-
-        <Container
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '100vh',
-            paddingY: '2rem',
-          }}
-          maxWidth={false}
-        >
-          <motion.div
-            ref={ref4}
-            animate={controls4}
-            initial={{ opacity: 0, x: 100 }}
-            style={{ width: '100%' }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-              }}
-            >
-              <Box
-                sx={{
-                  paddingLeft: isMobile ? '0rem' : '2rem',
-                  paddingBottom: '1rem',
-                  height: '100%',
-                }}
-              >
-                <Typography
-                  variant="h2"
-                  sx={{
-                    textAlign: 'center',
-                  }}
-                >
-                  Other things you might find useful
-                </Typography>
-              </Box>
-
-              <Divider
-                variant="middle"
-                sx={{
-                  width: '100%',
-                  margin: '1rem',
-                }}
-              />
-
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Typography
-                  variant="body1"
-                  sx={{
-                    textAlign: 'center',
-                  }}
-                  gutterBottom
-                >
-                  I also happen to know a few other technologies and skills that
-                  i have picked up along the way
-                </Typography>
-              </Box>
-
-              <Box
-                sx={{
-                  display: 'block',
-                  width: '100%',
-                  maxWidth: '600px',
-                }}
-              >
-                {aboutData?.other?.map((skill, index) => (
-                  <StaggeredChip
-                    delay={0.1 * index}
-                    key={index}
-                    label={skill.name}
-                    ready={true}
-                    onClick={() => handleClick(skill.link ? skill.link : '')}
-                    sx={{
-                      margin: '0.3rem',
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
-          </motion.div>
-        </Container>
-      </Container>
-    </motion.div>
-  );
-};
+    <Box component="section" sx={{ mt: 10 }}>
+      <SectionLabel>A bit more</SectionLabel>
+      <Reveal>
+        <Paragraphs items={[...aboutData.personal, aboutData.work]} />
+      </Reveal>
+    </Box>
+  </Container>
+);

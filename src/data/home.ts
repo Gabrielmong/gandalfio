@@ -1,63 +1,172 @@
-import { Project } from 'models/Project';
+import { Project } from 'models';
+import vakaShot from 'assets/projects/vaka.jpg';
+import lorestoneShot from 'assets/projects/lorestone.jpg';
+import yggdrasilShot from 'assets/projects/yggdrasil.jpg';
+import grainShot from 'assets/projects/grain.jpg';
+import significantOtherShot from 'assets/projects/significantother.jpg';
+import homeControlShot from 'assets/projects/homecontrol.jpg';
 
 export interface HomeData {
-  title: string;
-  position: string;
-  description: string;
-  segue: string;
+  name: string;
+  role: string;
+  location: string;
+  intro: string;
   projects: Project[];
 }
 
-export const homeData = {
-  title: 'Gabriel Monge',
-  position: 'Software Engineer',
-  description: `I'm a Fullstack Developer @ Track Star excelling in JavaScript, TypeScript, React.js, and Node.js. I hold a bachelor's degree in Computer Systems Engineering. Proven expertise in developing web applications from inception to deployment, optimizing processes, and enhancing software functionality. Proficient in GitHub-based collaboration and CI/CD.`,
-  segue: `Anyways, this is what I'm currently capable of.`,
+const gh = (repo: string) => `https://github.com/Gabrielmong/${repo}`;
+
+export const homeData: HomeData = {
+  name: 'Gabriel Monge',
+  role: 'Software Engineer',
+  location: 'San José, Costa Rica',
+  intro:
+    "I build web, mobile and desktop apps, mostly TypeScript, React and Node, with some C# when the hardware calls for it. These are the things I've made lately.",
   projects: [
+    // Featured, in display order
     {
-      title: 'Gandalf.io',
-      description: `Portfolio website, made with React, TypeScript and Vite.`,
-      link: 'https://github.com/Gabrielmong/gandalfio',
+      title: 'Vaka',
+      description:
+        'A hardware monitor for a small dedicated screen. It ships with an installer, twelve ready-made layouts and a layout editor that runs in the browser with a live preview.',
+      year: 2026,
+      featured: true,
+      stack: ['C#', 'TypeScript', 'Windows', 'LibreHardwareMonitor'],
+      repo: gh('vaka'),
+      live: 'https://gabrielmong.github.io/vaka/',
+      image: vakaShot,
     },
     {
-      title: 'Berserker',
-      description: `A videogame developed on Unity and C# as final project for the course 'Estructura y Arquitectura de Videojuegos', learning the basics of Unity and how game development works.`,
-      link: 'https://github.com/Gabrielmong/berserker',
+      title: 'Lorestone',
+      description:
+        'A campaign manager for Dungeon Masters: characters, branching decision trees, session logs, combat encounters and faction reputation, plus a spoiler-free view for the players.',
+      year: 2026,
+      featured: true,
+      stack: [
+        'React',
+        'TypeScript',
+        'GraphQL',
+        'Prisma',
+        'PostgreSQL',
+        'ReactFlow',
+      ],
+      live: 'https://lorestone.app/landing',
+      image: lorestoneShot,
+      private: true,
     },
     {
-      title: 'Tracker',
-      description: `A webpage im currently working on, it's a finance tracker so I can stop using an excel sheet to keep track of my expenses.`,
-      link: 'https://github.com/Gabrielmong/tracker',
+      title: 'SignificantOther',
+      description:
+        'A mobile app for couples: countdowns, a shared mood calendar, a journal and wishlist, places on a map and home-screen widgets.',
+      year: 2024,
+      featured: true,
+      stack: ['React Native', 'Expo', 'Firebase', 'Mapbox'],
+      repo: gh('SignificantOther'),
+      image: significantOtherShot,
     },
     {
-      title: 'Tracker Backend',
-      description: `Server and database for the tracker project, made with Node.js and PostgreSQL., using Express, TS and Apollo Server.`,
-      link: 'https://github.com/Gabrielmong/tracker-backend',
+      title: 'Yggdrasil',
+      description:
+        "A reading tracker with a social side. Scan a book's barcode to add it, log your progress and see what friends are reading.",
+      year: 2026,
+      featured: true,
+      stack: ['Next.js', 'Prisma', 'PostgreSQL', 'S3', 'Claude API'],
+      repo: gh('yggdrasil'),
+      live: 'https://yggdrasil-phi-lac.vercel.app',
+      image: yggdrasilShot,
     },
     {
-      title: 'Algo Visualizer Pyton',
-      description: `Visualizes some sorting algorithms, made on Python`,
-      link: 'https://github.com/Gabrielmong/Code-Playground/blob/master/Python/algosVisualizer.py',
+      title: 'Grain',
+      description:
+        'Project and cost manager for woodworkers in Costa Rica. It measures lumber in varas, prices in colones or dollars, and speaks English, Spanish and Portuguese.',
+      year: 2025,
+      featured: true,
+      stack: ['React', 'GraphQL', 'Prisma', 'PostgreSQL'],
+      repo: gh('Grain'),
+      live: 'https://woodwork-24u.pages.dev/',
+      image: grainShot,
     },
     {
-      title: 'Algo Visualizer JS',
-      description: `Visualizes some sorting algorithms, made on JavaScript`,
-      link: 'https://gabrielmong.github.io/algo-visualizer/',
+      title: 'Home Control',
+      description:
+        'A self-hosted control panel for the lights, plugs and cameras in my house. It talks to Tuya, Kasa, Govee and Swann devices over the local network, with routines, per-user layouts and a wall-tablet mode.',
+      year: 2026,
+      featured: true,
+      stack: ['React', 'GraphQL', 'Prisma', 'PostgreSQL', 'WebRTC'],
+      repo: gh('iot'),
+      image: homeControlShot,
     },
+
+    // Earlier work, newest first
     {
-      title: 'The Crops Chronicles',
-      description: `This is a game made in Unity and C#, it's a 3d "farming" game, that actually has fighting mechanics for some reason, assigned as a final project for "Diseño de Videojuegos" course.`,
-      link: 'https://github.com/Gabrielmong/diseno-videojuegos-g2',
-    },
-    {
-      title: 'Biotopika',
-      description: `A website I'm currently working on, it's a store for dermo-cosmetics, made with React, TypeScript, Node.js, PostgreSQL, and Express.`,
-      link: 'https://github.com/Biotopika',
+      title: 'WeightTracker',
+      description:
+        'A friendly weight-loss competition with charts, built for a group of friends.',
+      year: 2026,
+      featured: false,
+      stack: ['Next.js', 'GraphQL', 'Prisma'],
+      repo: gh('weighttracker'),
     },
     {
       title: 'Hogar Infantil Brotes de Olivo',
-      description: `A webpage I made for a children's home, as part of a social service project, made with React, TypeScript, Node.js, PostgreSQL, and Express.`,
-      link: 'https://github.com/Brotes-de-Olivo',
+      description:
+        "Website for a children's home, built as a social service project.",
+      year: 2024,
+      featured: false,
+      stack: ['React', 'Node.js', 'PostgreSQL'],
+      repo: 'https://github.com/Brotes-de-Olivo',
+    },
+    {
+      title: 'breed-classifier',
+      description:
+        'Upload a dog photo and it tells you the breed, right in the browser.',
+      year: 2023,
+      featured: false,
+      stack: ['React', 'TensorFlow.js'],
+      repo: gh('breed-classifier'),
+    },
+    {
+      title: 'Tracker',
+      description:
+        'Personal finance tracker that replaced my expenses spreadsheet.',
+      year: 2023,
+      featured: false,
+      stack: ['React', 'GraphQL', 'Express', 'PostgreSQL'],
+      repos: [
+        { label: 'Frontend', url: gh('tracker') },
+        { label: 'Backend', url: gh('tracker-backend') },
+      ],
+    },
+    {
+      title: 'Biotopika',
+      description: 'Store and management system for a dermo-cosmetics startup.',
+      year: 2023,
+      featured: false,
+      stack: ['React', 'Node.js', 'PostgreSQL'],
+      repo: 'https://github.com/Biotopika',
+    },
+    {
+      title: 'Algo Visualizer',
+      description: 'Sorting algorithms, animated step by step.',
+      year: 2023,
+      featured: false,
+      stack: ['TypeScript', 'Python'],
+      repos: [
+        { label: 'JS', url: gh('algo-visualizer') },
+        {
+          label: 'Python',
+          url: gh('Code-Playground/blob/master/Python/algosVisualizer.py'),
+        },
+      ],
+      live: 'https://gabrielmong.github.io/algo-visualizer/',
+    },
+    {
+      title: 'Berserker',
+      description:
+        'A Unity game made as the final project for a game architecture course.',
+      year: 2022,
+      featured: false,
+      stack: ['Unity', 'C#'],
+      repo: gh('berserker'),
     },
   ],
 };

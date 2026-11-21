@@ -1,22 +1,28 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import { resolve } from 'node:path';
 
-// https://vitejs.dev/config/
+const src = (dir: string) => resolve(import.meta.dirname, 'src', dir);
+
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: '/gandalfio/',
   resolve: {
     alias: {
-      pages: path.resolve('src/pages'),
-      components: path.resolve('src/components'),
-      assets: path.resolve('src/assets'),
-      styles: path.resolve('src/styles'),
-      types: path.resolve('src/types'),
-      data: path.resolve('src/data'),
-      theme: path.resolve('src/theme'),
-      context: path.resolve('src/context'),
-      models: path.resolve('src/models'),
+      pages: src('pages'),
+      components: src('components'),
+      assets: src('assets'),
+      data: src('data'),
+      theme: src('theme'),
+      models: src('models'),
+      test: src('test'),
     },
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test/setup.ts',
+    css: false,
   },
 });

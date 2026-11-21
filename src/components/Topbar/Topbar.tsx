@@ -1,130 +1,149 @@
+import { ReactElement, useState } from 'react';
+import { NavLink } from 'react-router';
 import {
   AppBar,
-  Toolbar,
-  Container,
-  IconButton,
-  Button,
   Box,
+  Button,
+  Container,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItemButton,
+  ListItemText,
+  Toolbar,
   Typography,
-  Menu,
-  MenuItem,
-  Switch,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
-import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import { ReactElement, useEffect, useRef, useState } from 'react';
-import { TopbarProps } from './Topbar.model';
+import MenuIcon from '@mui/icons-material/Menu';
+import LightModeOutlined from '@mui/icons-material/LightModeOutlined';
+import DarkModeOutlined from '@mui/icons-material/DarkModeOutlined';
+import FileDownloadOutlined from '@mui/icons-material/FileDownloadOutlined';
+import { cvHref } from 'data';
+import { ThemeMode } from 'theme';
 
-export const Topbar = ({
-  navAnchor,
-  handleNavAnchor,
-  onDismiss,
-  title,
-  navItems,
-  currentTheme,
-  themeSwich,
-}: TopbarProps): ReactElement => {
-  const [isMobile, setIsMobile] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
-  const [scrolled, setScrolled] = useState(false);
-  const navigation = useNavigate();
+interface TopbarProps {
+  mode: ThemeMode;
+  onToggleTheme: () => void;
+}
 
-  const handleLinkClick = (path: string) => {
-    navigation(path);
-    onDismiss();
-  };
+const navItems = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Contact', path: '/contact' },
+];
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 600) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
+export const Topbar = ({ mode, onToggleTheme }: TopbarProps): ReactElement => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [open, setOpen] = useState(false);
+
+  const themeToggle = (
+    <IconButton
+      onClick={onToggleTheme}
+      color="inherit"
+      aria-label={
+        mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
       }
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  window.onscroll = () => {
-    if (navRef.current) {
-      if (window.pageYOffset > 0) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    }
-  };
+    >
+      {mode === 'dark' ? <LightModeOutlined /> : <DarkModeOutlined />}
+    </IconButton>
+  );
 
   return (
-    <AppBar
-      position="sticky"
-      ref={navRef}
-      color={scrolled ? 'primary' : 'secondary'}
-      sx={{
-        transition: 'background-color 0.5s ease',
-      }}
-    >
-      <Toolbar>
-        <Box sx={{ flexGrow: 1 }}>
-          <Button
-            color="inherit"
-            onClick={() => handleLinkClick('/')}
-            sx={{ textTransform: 'none' }}
+    <AppBar position="sticky" elevation={0}>
+      <Container maxWidth="lg">
+        <Toolbar disableGutters sx={{ gap: 1 }}>
+          <Typography
+            component={NavLink}
+            to="/"
+            sx={{
+              fontWeight: 700,
+              color: 'inherit',
+              textDecoration: 'none',
+              mr: 'auto',
+            }}
           >
-            <Typography variant="h6">{title}</Typography>
-          </Button>
-        </Box>
+            gandalf.io
+          </Typography>
 
-        <Switch
-          checked={currentTheme === 'dark'}
-          onChange={themeSwich}
-          color="default"
-          inputProps={{ 'aria-label': 'checkbox with default color' }}
-        />
-
-        {isMobile ? (
-          <>
-            <IconButton
-              color="inherit"
-              aria-label="menu"
-              onClick={handleNavAnchor}
-            >
-              {navAnchor ? <CloseIcon /> : <MenuIcon />}
-            </IconButton>
-
-            <Menu
-              anchorEl={navAnchor}
-              open={Boolean(navAnchor)}
-              onClose={onDismiss}
-              onClick={onDismiss}
-            >
+          {isMobile ? (
+            <>
+              {themeToggle}
+              <IconButton
+                color="inherit"
+                aria-label="Open menu"
+                onClick={() => setOpen(true)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+                <Box sx={{ width: 240, pt: 2 }} role="navigation">
+                  <List>
+                    {navItems.map((item) => (
+                      <ListItemButton
+                        key={item.path}
+                        component={NavLink}
+                        to={item.path}
+                        end
+                        onClick={() => setOpen(false)}
+                      >
+                        <ListItemText primary={item.label} />
+                      </ListItemButton>
+                    ))}
+                  </List>
+                  <Divider />
+                  <Box sx={{ p: 2 }}>
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      href={cvHref}
+                      download
+                      startIcon={<FileDownloadOutlined />}
+                    >
+                      CV
+                    </Button>
+                  </Box>
+                </Box>
+              </Drawer>
+            </>
+          ) : (
+            <>
               {navItems.map((item) => (
-                <MenuItem
-                  key={item.label}
-                  onClick={() => handleLinkClick(item.path)}
+                <Button
+                  key={item.path}
+                  component={NavLink}
+                  to={item.path}
+                  end
+                  color="inherit"
+                  sx={{
+                    color: 'text.secondary',
+                    '&.active': {
+                      color: 'text.primary',
+                      boxShadow: `inset 0 -2px 0 ${theme.palette.primary.main}`,
+                    },
+                    borderRadius: 0,
+                  }}
                 >
                   {item.label}
-                </MenuItem>
+                </Button>
               ))}
-            </Menu>
-          </>
-        ) : (
-          <>
-            {navItems.map((item) => (
               <Button
-                key={item.label}
-                color="inherit"
-                onClick={() => handleLinkClick(item.path)}
-                sx={{ textTransform: 'none' }}
+                variant="outlined"
+                size="small"
+                href={cvHref}
+                download
+                startIcon={<FileDownloadOutlined />}
+                sx={{ ml: 1, color: 'text.primary', borderColor: 'divider' }}
               >
-                {item.label}
+                CV
               </Button>
-            ))}
-          </>
-        )}
-      </Toolbar>
+              {themeToggle}
+            </>
+          )}
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };

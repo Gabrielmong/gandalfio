@@ -5,4 +5,3 @@ export interface Tech {
   link?: string;
   icon?: string;
 }
-
